@@ -18,9 +18,22 @@ und die vollständige Minion-Referenztabelle).
 
 1. JDK 25 (bereits vorhanden) und Maven installiert.
 2. `mvn clean package` im Projektordner ausführen.
-3. Beim ersten Start über den Button "Einstellungen" den eigenen
-   Hypixel-API-Key und Minecraft-Usernamen eintragen (wird lokal unter
-   `~/.hypixeltracker/config.json` gespeichert, **nicht** im Code).
+3. Beim ersten Start über den Button "Einstellungen" den
+   Minecraft-Usernamen eintragen (wird lokal unter
+   `~/.hypixeltracker/config.json` gespeichert).
+
+## Hypixel-API-Key & Server
+
+Die App enthält **keinen** API-Key und fragt Nutzer auch nicht nach einem.
+Laut [Hypixel-API-Policy](https://developer.hypixel.net/policies/) dürfen
+Nutzer ihre Keys nicht in Anwendungen Dritter eintragen.
+
+- Bazaar, Auktionen, Items → brauchen keinen Key, die App fragt direkt bei Hypixel.
+- SkyBlock-Profile → brauchen einen Key und laufen über den eigenen Server
+  im Ordner [`server/`](server/README.md). Nur der Server kennt den Key.
+
+Die Server-Adresse steht in `AppConfig.DEFAULT_SERVER_URL` und muss nach
+dem Einrichten des Servers auf die eigene Domain gesetzt werden.
 
 ## Bekannte offene Punkte (TODO im Code)
 

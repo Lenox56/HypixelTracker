@@ -11,51 +11,56 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 
 /**
- * Kapselt alle Aufrufe gegen die offizielle Hypixel-API.
- * Der API-Key wird NICHT hier fest eingetragen, sondern kommt aus
- * AppConfig (vom Nutzer selbst eingegeben) - siehe API-Policy.
+ * Kapselt alle Aufrufe gegen die Hypixel-API.
  *
- * TODO: einfachen In-Memory/Disk-Cache ergaenzen (v.a. fuer
- * /resources/skyblock/items und /skyblock/bazaar, die sich nur
- * alle paar Minuten aendern).
+ * Die App enthaelt KEINEN API-Key und nimmt auch keinen vom Nutzer an
+ * (API-Policy: Nutzer duerfen ihre Keys nicht in Anwendungen Dritter
+ * eintragen). Deshalb:
+ * - Endpunkte ohne Key (Bazaar, Auktionen, Items) -> direkt an api.hypixel.net
+ * - Profile (braucht einen Key) -> ueber den eigenen Server (Ordner server/),
+ *   der den Key haelt und die Antworten zwischenspeichert.
  */
 public class HypixelApiService {
 
-    private static final String BASE_URL = "https://api.hypixel.net";
+    private static final String HYPIXEL_URL = "https://api.hypixel.net";
+    private static final String USER_AGENT = "HypixelTracker/1.0";
 
     private final HttpClient client = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(10))
             .build();
     private final ObjectMapper mapper = new ObjectMapper();
-    private String apiKey;
+    private String serverUrl;
 
-    public HypixelApiService(String apiKey) {
-        this.apiKey = apiKey;
+    public HypixelApiService(String serverUrl) {
+        setServerUrl(serverUrl);
     }
 
-    /** Erlaubt es, den Key zur Laufzeit zu aendern (z.B. nach dem Einstellungsdialog). */
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
+    /** Erlaubt es, die Server-Adresse zur Laufzeit zu aendern (z.B. nach dem Einstellungsdialog). */
+    public void setServerUrl(String serverUrl) {
+        this.serverUrl = serverUrl == null ? "" : serverUrl.replaceAll("/+$", "");
     }
 
-    /** Alle SkyBlock-Profile (Inseln) eines Spielers. */
+    /** Alle SkyBlock-Profile (Inseln) eines Spielers - ueber den eigenen Server. */
     public JsonNode getProfiles(String playerUuid) throws IOException, InterruptedException {
-        return getJson("/v2/skyblock/profiles?uuid=" + playerUuid, true);
+        if (serverUrl.isBlank()) {
+            throw new IllegalStateException("Keine Server-Adresse hinterlegt. Bitte in den Einstellungen eintragen.");
+        }
+        return getJson(serverUrl + "/v1/skyblock/profiles?uuid=" + playerUuid);
     }
 
     /** Alle aktiven Auktionen, seitenweise (page 0 = neueste Seite zuerst laut API). */
     public JsonNode getAuctions(int page) throws IOException, InterruptedException {
-        return getJson("/v2/skyblock/auctions?page=" + page, false);
+        return getJson(HYPIXEL_URL + "/v2/skyblock/auctions?page=" + page);
     }
 
     /** Aktuelle Bazaar-Preise aller Produkte. */
     public JsonNode getBazaar() throws IOException, InterruptedException {
-        return getJson("/v2/skyblock/bazaar", false);
+        return getJson(HYPIXEL_URL + "/v2/skyblock/bazaar");
     }
 
     /** Item-Datenbank inkl. Crafting-Rezepten (fuer Accessoires/Minions-Abgleich). */
     public JsonNode getItemResources() throws IOException, InterruptedException {
-        return getJson("/v2/resources/skyblock/items", false);
+        return getJson(HYPIXEL_URL + "/v2/resources/skyblock/items");
     }
 
     /** UUID eines Spielers anhand des Namens (Mojang-API, kein Hypixel-Key noetig). */
@@ -69,23 +74,29 @@ public class HypixelApiService {
         return node.get("id").asText();
     }
 
-    private JsonNode getJson(String path, boolean requiresKey) throws IOException, InterruptedException {
-        if (requiresKey && (apiKey == null || apiKey.isBlank())) {
-            throw new IllegalStateException("Kein Hypixel-API-Key hinterlegt. Bitte in den Einstellungen eintragen.");
+    private JsonNode getJson(String url) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .timeout(Duration.ofSeconds(20))
+                .header("User-Agent", USER_AGENT)
+                .GET()
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 429 || response.statusCode() == 503) {
+            String retryAfter = response.headers().firstValue("Retry-After").orElse("einigen");
+            throw new IOException("Zu viele Anfragen - bitte in " + retryAfter + " Sekunden erneut versuchen.");
         }
-
-        HttpRequest.Builder builder = HttpRequest.newBuilder()
-                .uri(URI.create(BASE_URL + path))
-                .GET();
-
-        if (requiresKey) {
-            builder.header("API-Key", apiKey);
-        }
-
-        HttpResponse<String> response = client.send(builder.build(), HttpResponse.BodyHandlers.ofString());
 
         if (response.statusCode() != 200) {
-            throw new IOException("Hypixel-API antwortete mit Status " + response.statusCode() + ": " + response.body());
+            String cause;
+            try {
+                cause = mapper.readTree(response.body()).path("cause").asText(response.body());
+            } catch (IOException e) {
+                cause = response.body();
+            }
+            throw new IOException("Anfrage fehlgeschlagen (Status " + response.statusCode() + "): " + cause);
         }
 
         JsonNode node = mapper.readTree(response.body());
