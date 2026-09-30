@@ -1,0 +1,6 @@
+# Caddy holt automatisch ein kostenloses HTTPS-Zertifikat (Let's Encrypt)
+# fuer die Domain aus der .env-Datei.
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy api:8080
+}

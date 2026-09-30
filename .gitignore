@@ -1,0 +1,4 @@
+target/
+runtime-image/
+*.exe
+server/.env

@@ -1,22 +1,28 @@
 package com.hypixeltracker.config;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 
 /**
- * Haelt lokale Einstellungen (v.a. den vom Nutzer selbst eingetragenen
- * Hypixel-API-Key). Wird NICHT mit ins JAR/EXE gebaut, sondern liegt
- * als separate Datei neben der App - siehe Policy-Hinweis: eigener Key
- * pro Nutzer, kein fest eingebetteter Key.
+ * Haelt lokale Einstellungen des Nutzers (Username, Server-Adresse).
+ * Einen Hypixel-API-Key gibt es in der App bewusst NICHT: laut API-Policy
+ * duerfen Nutzer keine Keys in Anwendungen Dritter eintragen. Anfragen,
+ * die einen Key brauchen, laufen ueber den eigenen Server (Ordner server/).
  */
+// ignoreUnknown: alte config.json-Dateien enthalten noch "hypixelApiKey"
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AppConfig {
+
+    /** TODO: nach dem Einrichten des Hetzner-Servers auf die eigene Domain setzen. */
+    public static final String DEFAULT_SERVER_URL = "https://tracker.example.com";
 
     private static final File CONFIG_FILE = new File(System.getProperty("user.home"),
             ".hypixeltracker/config.json");
 
-    private String hypixelApiKey = "";
+    private String serverUrl = DEFAULT_SERVER_URL;
     private String minecraftUsername = "";
     /** Wenn true, werden Ist-Daten ueber alle Profile des Spielers vereinigt. */
     private boolean aggregateAllProfiles = true;
@@ -42,12 +48,12 @@ public class AppConfig {
         }
     }
 
-    public String getHypixelApiKey() {
-        return hypixelApiKey;
+    public String getServerUrl() {
+        return serverUrl;
     }
 
-    public void setHypixelApiKey(String hypixelApiKey) {
-        this.hypixelApiKey = hypixelApiKey;
+    public void setServerUrl(String serverUrl) {
+        this.serverUrl = serverUrl;
     }
 
     public String getMinecraftUsername() {

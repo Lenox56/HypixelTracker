@@ -16,7 +16,7 @@ $AppName        = "HypixelTracker"
 $MainJar        = "hypixeltracker-1.0.0.jar"
 $MainClass      = "com.hypixeltracker.Main"
 $InputDir       = "target"
-$IconPath       = ""                              # leer = kein eigenes Icon
+$IconPath       = "packaging\icon.ico"            # Icon der .exe / Verknuepfung
 $JavaHome       = "C:\Program Files\Java\jdk-25"
 $JavaFxJmods    = "C:\javafx-jmods\javafx-jmods-25.0.4"
 $RuntimeImage   = "runtime-image"

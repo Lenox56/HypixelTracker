@@ -19,7 +19,7 @@ import javafx.scene.layout.HBox;
 /**
  * Zentrale Klasse, die alle Modul-Tabs zusammensteckt.
  * Jeder Tab bekommt Zugriff auf dieselben Service-Instanzen,
- * damit z.B. der API-Key nur einmal zentral verwaltet wird.
+ * damit z.B. die Server-Adresse nur einmal zentral verwaltet wird.
  */
 public class MainView {
 
@@ -29,7 +29,7 @@ public class MainView {
 
     public MainView(AppConfig config) {
         this.config = config;
-        this.apiService = new HypixelApiService(config.getHypixelApiKey());
+        this.apiService = new HypixelApiService(config.getServerUrl());
         this.wikiService = new WikiSearchService();
     }
 
@@ -44,7 +44,7 @@ public class MainView {
         );
         tabPane.getTabs().forEach(tab -> tab.setClosable(false));
 
-        Button settingsButton = new Button("Einstellungen (API-Key)");
+        Button settingsButton = new Button("Einstellungen");
         settingsButton.setOnAction(e -> new SettingsDialog(config, apiService).showAndUpdate());
 
         HBox topBar = new HBox(settingsButton);
