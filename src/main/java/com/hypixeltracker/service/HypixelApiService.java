@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 
 /**
@@ -66,11 +68,18 @@ public class HypixelApiService {
     /** UUID eines Spielers anhand des Namens (Mojang-API, kein Hypixel-Key noetig). */
     public String resolveUuid(String username) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.mojang.com/users/profiles/minecraft/" + username))
+                .uri(URI.create("https://api.mojang.com/users/profiles/minecraft/"
+                        + URLEncoder.encode(username.trim(), StandardCharsets.UTF_8)))
                 .GET()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() == 404 || response.statusCode() == 204) {
+            throw new IOException("Minecraft-Account \"" + username + "\" wurde nicht gefunden.");
+        }
         JsonNode node = mapper.readTree(response.body());
+        if (!node.hasNonNull("id")) {
+            throw new IOException("UUID fuer \"" + username + "\" konnte nicht ermittelt werden (Status " + response.statusCode() + ").");
+        }
         return node.get("id").asText();
     }
 
