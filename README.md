@@ -1,18 +1,33 @@
-# HypixelTracker – Projekt-Grundgerüst
+# HypixelTracker
 
-Basiert auf den bisherigen Absprachen und dem bestehenden AttributeTracker.
-Dies ist ein **kompilierbares Grundgerüst**, kein fertiges Endprodukt –
-an den mit `TODO` markierten Stellen fehlt noch echte Logik (v.a. die
-konkrete NBT-Feldauswertung, das Zusammenführen der Excel-Referenzliste
-und die vollständige Minion-Referenztabelle).
+Desktop-App (Java/JavaFX) für Hypixel SkyBlock, basierend auf dem
+ursprünglichen AttributeTracker.
 
 ## Module
 
-- `Attribute / Shards` – Ist/Soll-Abgleich der Attribute-Shards
-- `Accessoires` – Ist/Soll-Abgleich inkl. Craftbar-Status
-- `Minions` – aktuelle vs. maximale Tier-Stufe, coop-weit
-- `AH / Bazaar Flipping` – Unterpreis-Auktionen + Bazaar-Margen
+- `Attribute / Shards` – Hunting-Attribute mit Stufe, gesyphonten Shards
+  und fehlenden Shards bis zur nächsten Stufe; nicht freigeschaltete Attribute
+- `Accessoires` – fehlende Accessoires (inkl. Upgrade-Stufen) mit aktuellem
+  Bazaar-/AH-Preis
+- `Minions` – aktuelle vs. maximale Stufe je Minion-Typ, coop-weit
+- `AH / Bazaar Flipping` – Sofortkäufe deutlich unter dem nächsten Angebot
+  (Gewinn nach AH-Gebühren) und Bazaar-Margen nach Steuer mit Mindestvolumen
 - `Wiki-Suche` – freie Suche + Basis für kontextuelle Info-Icons
+
+**Accessoires** brauchen die Inventar-API: im Spiel unter
+*SkyBlock-Menü → Settings → API Settings* aktivieren.
+
+## Referenzdaten
+
+Shard-Liste, Accessoire-Upgrades und maximale Minion-Stufen liegen unter
+`src/main/resources/data/` und stammen aus dem
+[NotEnoughUpdates-REPO](https://github.com/NotEnoughUpdates/NotEnoughUpdates-REPO)
+(MIT-Lizenz, siehe `data/NOTICE.txt`). Nach SkyBlock-Updates aktualisieren:
+
+```
+git clone --depth 1 https://github.com/NotEnoughUpdates/NotEnoughUpdates-REPO neu
+python tools/update_reference_data.py neu
+```
 
 ## Setup
 
@@ -36,18 +51,12 @@ Die Server-Adresse steht in `AppConfig.DEFAULT_SERVER_URL`
 (aktuell `https://lenox-tracker.duckdns.org`) und kann von Nutzern unter
 "Einstellungen" überschrieben werden.
 
-## Bekannte offene Punkte (TODO im Code)
+## Bekannte offene Punkte
 
-- Echte NBT-Feldnamen für `inv_contents`, `ender_chest_contents`,
-  `talisman_bag` etc. gegen die aktuelle API-Antwort verifizieren
-  (Struktur kann sich mit SkyBlock-Updates leicht ändern).
-- Excel-Referenzliste aus dem ursprünglichen AttributeTracker einbinden.
-- Vollständige Minion-Referenztabelle (`MinionReferenceData`) pflegen.
-- Rezept-/Materialabgleich für Accessoires und Minion-Upgrades ergänzen.
-- API-Calls in `javafx.concurrent.Task` auslagern, damit die UI beim
-  Synchronisieren nicht blockiert.
-- Normalpreis-Ermittlung für AH-Flipping verbessern (aktuell nur
-  Platzhalter über Bazaar-Preise).
+- Rezept-/Materialabgleich für Accessoires und Minion-Upgrades
+  (craftbar ja/nein, Materialkosten).
+- AH-Flipping vergleicht nur mit dem nächstgünstigeren Angebot; Haustiere
+  und Bücher mit mehreren Verzauberungen werden ausgelassen.
 
 ## Als .exe bauen
 

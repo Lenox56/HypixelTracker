@@ -9,6 +9,7 @@ public class AttributeShard {
 
     private String internalName;
     private String attributeName;
+    private String shardName;
     private String rarity;
     private int stacks;
     private int tier;
@@ -18,9 +19,10 @@ public class AttributeShard {
     public AttributeShard() {
     }
 
-    public AttributeShard(String internalName, String attributeName, ShardRarity rarity, int stacks) {
+    public AttributeShard(String internalName, String attributeName, String shardName, ShardRarity rarity, int stacks) {
         this.internalName = internalName;
         this.attributeName = attributeName;
+        this.shardName = shardName;
         this.rarity = rarity == null ? "?" : rarity.displayName();
         this.stacks = stacks;
         this.tier = rarity == null ? 0 : rarity.levelFromStacks(stacks);
@@ -42,6 +44,15 @@ public class AttributeShard {
 
     public void setAttributeName(String attributeName) {
         this.attributeName = attributeName;
+    }
+
+    /** Name des Shards, z.B. "Grove" (Attribut: "Nature Elemental"). */
+    public String getShardName() {
+        return shardName;
+    }
+
+    public void setShardName(String shardName) {
+        this.shardName = shardName;
     }
 
     public String getRarity() {

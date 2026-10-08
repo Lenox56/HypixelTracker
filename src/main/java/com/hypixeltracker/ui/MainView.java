@@ -2,6 +2,7 @@ package com.hypixeltracker.ui;
 
 import com.hypixeltracker.config.AppConfig;
 import com.hypixeltracker.service.HypixelApiService;
+import com.hypixeltracker.service.MarketDataService;
 import com.hypixeltracker.service.WikiSearchService;
 import com.hypixeltracker.ui.tabs.AccessoryTrackerTab;
 import com.hypixeltracker.ui.tabs.AuctionBazaarTab;
@@ -25,11 +26,13 @@ public class MainView {
 
     private final AppConfig config;
     private final HypixelApiService apiService;
+    private final MarketDataService marketData;
     private final WikiSearchService wikiService;
 
     public MainView(AppConfig config) {
         this.config = config;
         this.apiService = new HypixelApiService(config.getServerUrl());
+        this.marketData = new MarketDataService(apiService);
         this.wikiService = new WikiSearchService();
     }
 
@@ -37,9 +40,9 @@ public class MainView {
         TabPane tabPane = new TabPane();
         tabPane.getTabs().addAll(
                 new Tab("Attribute / Shards", new ShardTrackerTab(apiService, config).build()),
-                new Tab("Accessoires", new AccessoryTrackerTab(apiService, config).build()),
+                new Tab("Accessoires", new AccessoryTrackerTab(apiService, marketData, config).build()),
                 new Tab("Minions", new MinionTrackerTab(apiService, config).build()),
-                new Tab("AH / Bazaar Flipping", new AuctionBazaarTab(apiService).build()),
+                new Tab("AH / Bazaar Flipping", new AuctionBazaarTab(marketData).build()),
                 new Tab("Wiki-Suche", new WikiSearchTab(wikiService).build())
         );
         tabPane.getTabs().forEach(tab -> tab.setClosable(false));

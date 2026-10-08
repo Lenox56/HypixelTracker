@@ -3,8 +3,7 @@ package com.hypixeltracker.model;
 /**
  * Ein Minion-Typ (z.B. COBBLESTONE) mit aktuell erreichter Tier-Stufe
  * (aus crafted_generators, coop-weit vereinigt) und der maximal
- * moeglichen Stufe (aus der lokalen Referenztabelle, siehe
- * MinionReferenceData).
+ * moeglichen Stufe (aus den Referenzdaten, siehe ReferenceData).
  */
 public class Minion {
 
@@ -23,7 +22,8 @@ public class Minion {
         this.maxTier = maxTier;
     }
 
-    public int missingTiers() {
+    /** Anzahl noch nicht gebauter Stufen (fuer die Tabellenspalte). */
+    public int getMissingTiers() {
         return Math.max(0, maxTier - currentTier);
     }
 

@@ -9,11 +9,9 @@ import com.hypixeltracker.service.AttributeService;
 import com.hypixeltracker.service.HypixelApiService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -48,26 +46,30 @@ public class ShardTrackerTab {
     public BorderPane build() {
         TableView<AttributeShard> table = new TableView<>(shards);
 
-        TableColumn<AttributeShard, String> nameCol = new TableColumn<>("Shard");
+        TableColumn<AttributeShard, String> nameCol = new TableColumn<>("Attribut");
         nameCol.setCellValueFactory(new PropertyValueFactory<>("attributeName"));
-        nameCol.setPrefWidth(220);
+        nameCol.setPrefWidth(200);
+
+        TableColumn<AttributeShard, String> shardCol = new TableColumn<>("Shard");
+        shardCol.setCellValueFactory(new PropertyValueFactory<>("shardName"));
+        shardCol.setPrefWidth(150);
 
         TableColumn<AttributeShard, String> rarityCol = new TableColumn<>("Seltenheit");
         rarityCol.setCellValueFactory(new PropertyValueFactory<>("rarity"));
 
         TableColumn<AttributeShard, Integer> tierCol = new TableColumn<>("Stufe");
         tierCol.setCellValueFactory(new PropertyValueFactory<>("tier"));
-        tierCol.setCellFactory(col -> textCell(level -> level + " / " + ShardRarity.MAX_LEVEL));
+        tierCol.setCellFactory(col -> BackgroundSync.textCell(level -> level + " / " + ShardRarity.MAX_LEVEL));
 
         TableColumn<AttributeShard, Integer> stacksCol = new TableColumn<>("Gesyphont");
         stacksCol.setCellValueFactory(new PropertyValueFactory<>("stacks"));
 
         TableColumn<AttributeShard, Integer> nextCol = new TableColumn<>("Bis naechste Stufe");
         nextCol.setCellValueFactory(new PropertyValueFactory<>("shardsToNextLevel"));
-        nextCol.setCellFactory(col -> textCell(n -> n < 0 ? "?" : n == 0 ? "max" : n + " Shards"));
+        nextCol.setCellFactory(col -> BackgroundSync.textCell(n -> n < 0 ? "?" : n == 0 ? "max" : n + " Shards"));
         nextCol.setPrefWidth(140);
 
-        table.getColumns().addAll(List.of(nameCol, rarityCol, tierCol, stacksCol, nextCol));
+        table.getColumns().addAll(List.of(nameCol, shardCol, rarityCol, tierCol, stacksCol, nextCol));
 
         Label statusLabel = new Label("Noch nicht synchronisiert.");
         Button syncButton = new Button("Mit Hypixel-Account synchronisieren");
@@ -85,43 +87,23 @@ public class ShardTrackerTab {
     private void sync(Button syncButton, Label statusLabel) {
         String username = config.getMinecraftUsername();
         boolean aggregate = config.isAggregateAllProfiles();
-        if (username == null || username.isBlank()) {
-            statusLabel.setText("Bitte zuerst unter \"Einstellungen\" den Minecraft-Username eintragen.");
+        if (!BackgroundSync.requireUsername(username, statusLabel)) {
             return;
         }
 
-        // Im Hintergrund, damit das Fenster waehrend der Anfragen nicht einfriert
-        Task<List<AttributeShard>> task = new Task<>() {
-            @Override
-            protected List<AttributeShard> call() throws Exception {
-                String uuid = apiService.resolveUuid(username);
-                JsonNode profiles = apiService.getProfiles(uuid);
-                writeDebugFile(attributeService.rawAttributes(profiles, uuid));
-                JsonNode items = apiService.getItemResources();
-                return attributeService.buildOverview(attributeService.readStacks(profiles, uuid, aggregate), items);
-            }
-        };
-
-        task.setOnSucceeded(e -> {
-            shards.setAll(task.getValue());
+        BackgroundSync.run(syncButton, statusLabel, progress -> {
+            String uuid = apiService.resolveUuid(username);
+            JsonNode profiles = apiService.getProfiles(uuid);
+            writeDebugFile(attributeService.rawAttributes(profiles, uuid));
+            return attributeService.buildOverview(attributeService.readStacks(profiles, uuid, aggregate));
+        }, result -> {
+            shards.setAll(result);
             long unlocked = shards.stream().filter(AttributeShard::isOwned).count();
             long maxed = shards.stream().filter(s -> s.getTier() >= ShardRarity.MAX_LEVEL).count();
             statusLabel.setText("Synchronisation abgeschlossen: " + unlocked + " Attribute freigeschaltet, "
                     + maxed + " auf Stufe " + ShardRarity.MAX_LEVEL + ", "
                     + (shards.size() - unlocked) + " noch nicht freigeschaltet.");
-            syncButton.setDisable(false);
         });
-        task.setOnFailed(e -> {
-            Throwable ex = task.getException();
-            statusLabel.setText("Fehler: " + (ex == null ? "unbekannt" : ex.getMessage()));
-            syncButton.setDisable(false);
-        });
-
-        syncButton.setDisable(true);
-        statusLabel.setText("Synchronisiere...");
-        Thread thread = new Thread(task, "attribute-sync");
-        thread.setDaemon(true);
-        thread.start();
     }
 
     private static void writeDebugFile(JsonNode rawAttributes) {
@@ -131,15 +113,5 @@ public class ShardTrackerTab {
         } catch (Exception e) {
             System.err.println("Konnte Debug-Datei nicht schreiben: " + e.getMessage());
         }
-    }
-
-    private static <T> TableCell<AttributeShard, T> textCell(java.util.function.Function<T, String> format) {
-        return new TableCell<>() {
-            @Override
-            protected void updateItem(T value, boolean empty) {
-                super.updateItem(value, empty);
-                setText(empty || value == null ? null : format.apply(value));
-            }
-        };
     }
 }
