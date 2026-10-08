@@ -1,17 +1,26 @@
 package com.hypixeltracker.model;
 
 /**
- * Gemeinsames Model fuer alles, was in den Tracker-Tabs als Zeile
- * dargestellt wird: Shard, Accessoire oder Minion-Upgrade.
- * Deckt Ist-Zustand, ob es craftbar ist und den aktuellen Preis ab.
+ * Eine Zeile im Accessoire-Tab: ob das Accessoire (oder eine hoehere
+ * Stufe davon) vorhanden ist und was es aktuell im AH/Bazaar kostet.
  */
 public class MissingItem {
 
     public enum Status {
-        OWNED,          // bereits vorhanden
-        CRAFTABLE,      // fehlt, aber alle Materialien vorhanden
-        MISSING_MATS,   // fehlt, Materialien fehlen ebenfalls
-        DROP_ONLY       // nicht craftbar (Boss-/Event-Drop, AH-only, ...)
+        MISSING("Fehlt"),
+        UPGRADE_OWNED("Hoehere Stufe vorhanden"),
+        OWNED("Vorhanden");
+
+        private final String label;
+
+        Status(String label) {
+            this.label = label;
+        }
+
+        @Override
+        public String toString() {
+            return label;
+        }
     }
 
     private String internalName;

@@ -1,84 +1,72 @@
 package com.hypixeltracker.service;
 
-import net.querz.nbt.io.NBTUtil;
+import net.querz.nbt.io.NBTDeserializer;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.CompoundTag;
 import net.querz.nbt.tag.ListTag;
 import net.querz.nbt.tag.Tag;
 
-import java.io.File;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
 /**
- * Wandelt die base64/gzip/NBT-kodierten Inventar-Felder aus der
- * SkyBlock-Profile-API (z.B. inv_contents, ender_chest_contents,
- * talisman_bag) in eine einfache Liste von Item-IDs (ExtraAttributes.id) um.
- *
- * Nutzt Querz/NBT (aktiv gepflegt, im Gegensatz zur zuerst gewaehlten
- * xyz.nickr:nbt, die archiviert war). NBTUtil.read() erwartet eine Datei,
- * daher wird der base64-dekodierte Inhalt kurz in eine temporaere Datei
- * geschrieben - das ist minimal langsamer als reines In-Memory-Parsing,
- * aber deutlich weniger fehleranfaellig als die interne Stream-API von
- * Hand nachzubauen.
- *
- * WICHTIG: Die genaue NBT-Struktur kann sich mit Spiel-Updates leicht
- * aendern - bei Problemen einmal den rohen Tag-Baum ausgeben
- * (System.out.println(root)) und gegenpruefen.
+ * Dekodiert die base64/gzip/NBT-kodierten Item-Daten der SkyBlock-API:
+ * Inventar-Felder (inv_contents, talisman_bag, ...) und item_bytes von Auktionen.
+ * Beide enthalten ein Root-Compound mit einer Liste "i" von Items; die
+ * SkyBlock-ID steht jeweils unter tag.ExtraAttributes.id.
  */
 public class NbtInventoryParser {
 
-    /**
-     * @param base64Data der Rohwert eines Inventar-Feldes aus der API-Antwort
-     * @return Liste der internen Item-IDs (z.B. "ATTRIBUTE_SHARD", "TALISMAN_...")
-     */
+    /** Alle Items aus einem base64-kodierten Feld (leere Slots werden uebersprungen). */
+    public List<CompoundTag> decodeItems(String base64Data) throws IOException {
+        List<CompoundTag> items = new ArrayList<>();
+        if (base64Data == null || base64Data.isBlank()) {
+            return items;
+        }
+        byte[] raw = Base64.getDecoder().decode(base64Data.trim());
+        NamedTag namedTag = new NBTDeserializer(true).fromStream(new ByteArrayInputStream(raw));
+        if (!(namedTag.getTag() instanceof CompoundTag root)) {
+            return items;
+        }
+        ListTag<?> list = root.getListTag("i");
+        if (list == null) {
+            return items;
+        }
+        for (Tag<?> entry : list) {
+            if (entry instanceof CompoundTag item && extraAttributes(item) != null) {
+                items.add(item);
+            }
+        }
+        return items;
+    }
+
+    /** Interne Item-IDs (z.B. "SPEED_TALISMAN") aus einem base64-kodierten Feld. */
     public List<String> extractItemIds(String base64Data) throws IOException {
         List<String> ids = new ArrayList<>();
-        if (base64Data == null || base64Data.isBlank()) {
-            return ids;
-        }
-
-        byte[] raw = Base64.getDecoder().decode(base64Data);
-
-        File tempFile = File.createTempFile("hypixeltracker-inv", ".nbt");
-        try {
-            Files.write(tempFile.toPath(), raw);
-
-            NamedTag namedTag = NBTUtil.read(tempFile);
-            if (!(namedTag.getTag() instanceof CompoundTag root)) {
-                return ids;
+        for (CompoundTag item : decodeItems(base64Data)) {
+            String id = itemId(item);
+            if (id != null) {
+                ids.add(id);
             }
-
-            ListTag<?> items = root.getListTag("i");
-            if (items == null) {
-                return ids;
-            }
-
-            for (Tag<?> entry : items) {
-                if (!(entry instanceof CompoundTag itemCompound)) continue;
-                String id = extractExtraAttributeId(itemCompound);
-                if (id != null) {
-                    ids.add(id);
-                }
-            }
-        } finally {
-            //noinspection ResultOfMethodCallIgnored
-            tempFile.delete();
         }
         return ids;
     }
 
-    private String extractExtraAttributeId(CompoundTag itemCompound) {
-        // Struktur (vereinfacht): tag -> ExtraAttributes -> id
-        CompoundTag tagCompound = itemCompound.getCompoundTag("tag");
-        if (tagCompound == null) return null;
+    /** Struktur: tag -> ExtraAttributes */
+    public static CompoundTag extraAttributes(CompoundTag item) {
+        CompoundTag tag = item.getCompoundTag("tag");
+        return tag == null ? null : tag.getCompoundTag("ExtraAttributes");
+    }
 
-        CompoundTag extraAttributes = tagCompound.getCompoundTag("ExtraAttributes");
-        if (extraAttributes == null) return null;
-
-        return extraAttributes.getString("id");
+    public static String itemId(CompoundTag item) {
+        CompoundTag extra = extraAttributes(item);
+        if (extra == null || !extra.containsKey("id")) {
+            return null;
+        }
+        String id = extra.getString("id");
+        return id == null || id.isBlank() ? null : id;
     }
 }

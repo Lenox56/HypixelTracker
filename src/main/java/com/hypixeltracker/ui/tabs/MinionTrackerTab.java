@@ -1,9 +1,10 @@
 package com.hypixeltracker.ui.tabs;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hypixeltracker.config.AppConfig;
 import com.hypixeltracker.model.Minion;
 import com.hypixeltracker.service.HypixelApiService;
-import com.hypixeltracker.service.MinionReferenceData;
+import com.hypixeltracker.service.MinionService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -15,18 +16,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
- * Zeigt pro Minion-Typ die aktuell erreichte vs. maximale Tier-Stufe.
- * crafted_generators wird coop-weit (ueber alle Mitglieder eines
- * Profils) vereinigt, siehe Kommentar in sync().
+ * Zeigt pro Minion-Typ die aktuell erreichte vs. maximale Stufe,
+ * coop-weit zusammengefasst. Unvollstaendige Minions stehen oben.
  */
 public class MinionTrackerTab {
 
+    private record SyncResult(int uniqueMinions, List<Minion> minions) {
+    }
+
     private final HypixelApiService apiService;
     private final AppConfig config;
+    private final MinionService minionService = new MinionService();
     private final ObservableList<Minion> minions = FXCollections.observableArrayList();
 
     public MinionTrackerTab(HypixelApiService apiService, AppConfig config) {
@@ -39,18 +43,24 @@ public class MinionTrackerTab {
 
         TableColumn<Minion, String> nameCol = new TableColumn<>("Minion");
         nameCol.setCellValueFactory(new PropertyValueFactory<>("displayName"));
+        nameCol.setPrefWidth(200);
 
         TableColumn<Minion, Integer> currentCol = new TableColumn<>("Aktuelle Stufe");
         currentCol.setCellValueFactory(new PropertyValueFactory<>("currentTier"));
+        currentCol.setCellFactory(col -> BackgroundSync.textCell(t -> t == 0 ? "-" : String.valueOf(t)));
 
         TableColumn<Minion, Integer> maxCol = new TableColumn<>("Max. Stufe");
         maxCol.setCellValueFactory(new PropertyValueFactory<>("maxTier"));
 
-        table.getColumns().addAll(nameCol, currentCol, maxCol);
+        TableColumn<Minion, Integer> missingCol = new TableColumn<>("Fehlende Stufen");
+        missingCol.setCellValueFactory(new PropertyValueFactory<>("missingTiers"));
+        missingCol.setCellFactory(col -> BackgroundSync.textCell(n -> n == 0 ? "fertig" : String.valueOf(n)));
+
+        table.getColumns().addAll(List.of(nameCol, currentCol, maxCol, missingCol));
 
         Label statusLabel = new Label("Noch nicht synchronisiert.");
         Button syncButton = new Button("Mit Hypixel-Account synchronisieren");
-        syncButton.setOnAction(e -> sync(statusLabel));
+        syncButton.setOnAction(e -> sync(syncButton, statusLabel));
 
         VBox topBox = new VBox(8, syncButton, statusLabel);
         topBox.setPadding(new Insets(10));
@@ -61,47 +71,26 @@ public class MinionTrackerTab {
         return pane;
     }
 
-    private void sync(Label statusLabel) {
-        try {
-            statusLabel.setText("Synchronisiere...");
-            String uuid = apiService.resolveUuid(config.getMinecraftUsername());
-            var profiles = apiService.getProfiles(uuid);
-
-            // crafted_generators ist pro Coop gemeinsam - daher ueber alle
-            // "members" eines Profils vereinigen (Set statt einfacher Liste).
-            Set<String> craftedAcrossCoop = new HashSet<>();
-            // TODO: fuer jedes Profil -> "members" durchlaufen -> jeweils
-            // "crafted_generators" (Array von Strings wie "WHEAT_7") einsammeln
-            // und in craftedAcrossCoop mergen.
-
-            minions.clear();
-            for (var entry : MinionReferenceData.MAX_TIER.entrySet()) {
-                String type = entry.getKey();
-                int maxTier = entry.getValue();
-                int currentTier = highestTierFor(type, craftedAcrossCoop);
-                minions.add(new Minion(type, MinionReferenceData.displayName(type), currentTier, maxTier));
-            }
-
-            statusLabel.setText("Synchronisation abgeschlossen (" + minions.size() + " Minion-Typen).");
-        } catch (Exception ex) {
-            statusLabel.setText("Fehler: " + ex.getMessage());
+    private void sync(Button syncButton, Label statusLabel) {
+        String username = config.getMinecraftUsername();
+        boolean aggregate = config.isAggregateAllProfiles();
+        if (!BackgroundSync.requireUsername(username, statusLabel)) {
+            return;
         }
-    }
 
-    private int highestTierFor(String minionType, Set<String> craftedEntries) {
-        int highest = 0;
-        for (String entry : craftedEntries) {
-            // Format ist z.B. "WHEAT_7" -> Typ + Tier
-            int lastUnderscore = entry.lastIndexOf('_');
-            if (lastUnderscore < 0) continue;
-            String type = entry.substring(0, lastUnderscore);
-            if (!type.equals(minionType)) continue;
-            try {
-                int tier = Integer.parseInt(entry.substring(lastUnderscore + 1));
-                highest = Math.max(highest, tier);
-            } catch (NumberFormatException ignored) {
-            }
-        }
-        return highest;
+        BackgroundSync.run(syncButton, statusLabel, progress -> {
+            String uuid = apiService.resolveUuid(username);
+            JsonNode profiles = apiService.getProfiles(uuid);
+            Set<String> crafted = minionService.readCraftedGenerators(profiles, aggregate);
+            return new SyncResult(crafted.size(), minionService.buildOverview(crafted));
+        }, result -> {
+            List<Minion> list = result.minions();
+            minions.setAll(list);
+            long maxed = list.stream().filter(m -> m.getMissingTiers() == 0 && m.getCurrentTier() > 0).count();
+            int missingTotal = list.stream().mapToInt(Minion::getMissingTiers).sum();
+            statusLabel.setText("Synchronisation abgeschlossen: " + result.uniqueMinions() + " einzigartige Minions gebaut, "
+                    + maxed + " von " + list.size() + " Minion-Typen auf Max-Stufe, "
+                    + missingTotal + " Stufen fehlen insgesamt.");
+        });
     }
 }

@@ -1,0 +1,2270 @@
+[
+ {
+  "attributeName": "Nature Elemental",
+  "bazaarName": "SHARD_GROVE",
+  "rarity": "COMMON",
+  "shardId": "C1",
+  "shardName": "Grove"
+ },
+ {
+  "attributeName": "Mossy Box",
+  "bazaarName": "SHARD_HIDEONLEAF",
+  "rarity": "COMMON",
+  "shardId": "C10",
+  "shardName": "Hideonleaf"
+ },
+ {
+  "attributeName": "Forest Fishing",
+  "bazaarName": "SHARD_VERDANT",
+  "rarity": "COMMON",
+  "shardId": "C11",
+  "shardName": "Verdant"
+ },
+ {
+  "attributeName": "Skeletal Ruler",
+  "bazaarName": "SHARD_CHILL",
+  "rarity": "COMMON",
+  "shardId": "C12",
+  "shardName": "Chill"
+ },
+ {
+  "attributeName": "Fortunate Farmer",
+  "bazaarName": "SHARD_FLY",
+  "rarity": "COMMON",
+  "shardId": "C13",
+  "shardName": "Fly"
+ },
+ {
+  "attributeName": "Creature Fisher",
+  "bazaarName": "SHARD_SEA_ARCHER",
+  "rarity": "COMMON",
+  "shardId": "C14",
+  "shardName": "Bogged"
+ },
+ {
+  "attributeName": "Arthropod Resistance",
+  "bazaarName": "SHARD_VORACIOUS_SPIDER",
+  "rarity": "COMMON",
+  "shardId": "C15",
+  "shardName": "Voracious Spider"
+ },
+ {
+  "attributeName": "Happy Box",
+  "bazaarName": "SHARD_HIDEONGIFT",
+  "rarity": "COMMON",
+  "shardId": "C16",
+  "shardName": "Hideongift"
+ },
+ {
+  "attributeName": "Yummy",
+  "bazaarName": "SHARD_BIRRIES",
+  "rarity": "COMMON",
+  "shardId": "C17",
+  "shardName": "Birries"
+ },
+ {
+  "attributeName": "Undead Resistance",
+  "bazaarName": "SHARD_TANK_ZOMBIE",
+  "rarity": "COMMON",
+  "shardId": "C18",
+  "shardName": "Tank Zombie"
+ },
+ {
+  "attributeName": "Fig Sharpening",
+  "bazaarName": "SHARD_CROW",
+  "rarity": "COMMON",
+  "shardId": "C19",
+  "shardName": "Crow"
+ },
+ {
+  "attributeName": "Fog Elemental",
+  "bazaarName": "SHARD_MIST",
+  "rarity": "COMMON",
+  "shardId": "C2",
+  "shardName": "Mist"
+ },
+ {
+  "attributeName": "Unity is Strength",
+  "bazaarName": "SHARD_TADGANG",
+  "rarity": "COMMON",
+  "shardId": "C20",
+  "shardName": "Tadgang"
+ },
+ {
+  "attributeName": "Ender Resistance",
+  "bazaarName": "SHARD_ZEALOT",
+  "rarity": "COMMON",
+  "shardId": "C21",
+  "shardName": "Zealot"
+ },
+ {
+  "attributeName": "Hitman Cooldown",
+  "bazaarName": "SHARD_RABBIT_MAFIOSO",
+  "rarity": "COMMON",
+  "shardId": "C22",
+  "shardName": "Rabbit Mafioso"
+ },
+ {
+  "attributeName": "Bucket Lover",
+  "bazaarName": "SHARD_CORALOT",
+  "rarity": "COMMON",
+  "shardId": "C23",
+  "shardName": "Coralot"
+ },
+ {
+  "attributeName": "Tree Lurker",
+  "bazaarName": "SHARD_HARPY",
+  "rarity": "COMMON",
+  "shardId": "C24",
+  "shardName": "Harpy"
+ },
+ {
+  "attributeName": "Visitor Speed",
+  "bazaarName": "SHARD_MUDWORM",
+  "rarity": "COMMON",
+  "shardId": "C25",
+  "shardName": "Mudworm"
+ },
+ {
+  "attributeName": "Lotus Trophy",
+  "bazaarName": "SHARD_LOTUS_FISH",
+  "rarity": "COMMON",
+  "shardId": "C26",
+  "shardName": "Lotusfish"
+ },
+ {
+  "attributeName": "Midas Touch",
+  "bazaarName": "SHARD_GOLDEN_GHOUL",
+  "rarity": "COMMON",
+  "shardId": "C27",
+  "shardName": "Golden Ghoul"
+ },
+ {
+  "attributeName": "Crop Speed",
+  "bazaarName": "SHARD_LOCUST",
+  "rarity": "COMMON",
+  "shardId": "C28",
+  "shardName": "Locust"
+ },
+ {
+  "attributeName": "Forest Strength",
+  "bazaarName": "SHARD_AZURE",
+  "rarity": "COMMON",
+  "shardId": "C29",
+  "shardName": "Azure"
+ },
+ {
+  "attributeName": "Light Elemental",
+  "bazaarName": "SHARD_FLASH",
+  "rarity": "COMMON",
+  "shardId": "C3",
+  "shardName": "Flash"
+ },
+ {
+  "attributeName": "Blazing Resistance",
+  "bazaarName": "SHARD_BEZAL",
+  "rarity": "COMMON",
+  "shardId": "C30",
+  "shardName": "Bezal"
+ },
+ {
+  "attributeName": "Woodland Resistance",
+  "bazaarName": "SHARD_STAG_BEETLE",
+  "rarity": "COMMON",
+  "shardId": "C31",
+  "shardName": "Stag Beetle"
+ },
+ {
+  "attributeName": "Fisherman",
+  "bazaarName": "SHARD_NIGHT_SQUID",
+  "rarity": "COMMON",
+  "shardId": "C32",
+  "shardName": "Inkling"
+ },
+ {
+  "attributeName": "Yog Membrane",
+  "bazaarName": "SHARD_YOG",
+  "rarity": "COMMON",
+  "shardId": "C33",
+  "shardName": "Yog"
+ },
+ {
+  "attributeName": "Owl Friend",
+  "bazaarName": "SHARD_BOREAL_OWL",
+  "rarity": "COMMON",
+  "shardId": "C34",
+  "shardName": "Boreal Owl"
+ },
+ {
+  "attributeName": "Decent Karma",
+  "bazaarName": "SHARD_NEWT",
+  "rarity": "COMMON",
+  "shardId": "C35",
+  "shardName": "Newt"
+ },
+ {
+  "attributeName": "Rotten Pickaxe",
+  "bazaarName": "SHARD_MINER_ZOMBIE",
+  "rarity": "COMMON",
+  "shardId": "C36",
+  "shardName": "Miner Zombie"
+ },
+ {
+  "attributeName": "Fortunate Miner",
+  "bazaarName": "SHARD_FLITTER",
+  "rarity": "COMMON",
+  "shardId": "C37",
+  "shardName": "Flitter"
+ },
+ {
+  "attributeName": "Lake Fishing",
+  "bazaarName": "SHARD_TEPID",
+  "rarity": "COMMON",
+  "shardId": "C38",
+  "shardName": "Tepid"
+ },
+ {
+  "attributeName": "Mythological Resistance",
+  "bazaarName": "SHARD_CRETAN_BULL",
+  "rarity": "COMMON",
+  "shardId": "C39",
+  "shardName": "Cretan Bull"
+ },
+ {
+  "attributeName": "Nocturnal Animal",
+  "bazaarName": "SHARD_PHANPYRE",
+  "rarity": "COMMON",
+  "shardId": "C4",
+  "shardName": "Phanpyre"
+ },
+ {
+  "attributeName": "Queen Tracker",
+  "bazaarName": "SHARD_ANT",
+  "rarity": "COMMON",
+  "shardId": "C40",
+  "shardName": "Ant"
+ },
+ {
+  "attributeName": "Cave Fishing",
+  "bazaarName": "SHARD_CAVERNFISH",
+  "rarity": "COMMON",
+  "shardId": "C41",
+  "shardName": "Cavernfish"
+ },
+ {
+  "attributeName": "Frozen Resistance",
+  "bazaarName": "SHARD_STRONGARM",
+  "rarity": "COMMON",
+  "shardId": "C42",
+  "shardName": "Strongarm"
+ },
+ {
+  "attributeName": "Gold Box",
+  "bazaarName": "SHARD_HIDEONSUN",
+  "rarity": "COMMON",
+  "shardId": "C43",
+  "shardName": "Hideonsun"
+ },
+ {
+  "attributeName": "Skeletal Resistance",
+  "bazaarName": "SHARD_HAGGARD",
+  "rarity": "COMMON",
+  "shardId": "C44",
+  "shardName": "Haggard"
+ },
+ {
+  "attributeName": "Honey Speed",
+  "bazaarName": "SHARD_HONEYHOG",
+  "rarity": "COMMON",
+  "shardId": "C45",
+  "shardName": "Honeyhog"
+ },
+ {
+  "attributeName": "Subterranean Resistance",
+  "bazaarName": "SHARD_SHYWORM",
+  "rarity": "COMMON",
+  "shardId": "C46",
+  "shardName": "Shyworm"
+ },
+ {
+  "attributeName": "Arcane Resistance",
+  "bazaarName": "SHARD_BRINELING",
+  "rarity": "COMMON",
+  "shardId": "C47",
+  "shardName": "Brineling"
+ },
+ {
+  "attributeName": "Rabbit Youth",
+  "bazaarName": "SHARD_CHOCOBUN",
+  "rarity": "COMMON",
+  "shardId": "C48",
+  "shardName": "Chocobun"
+ },
+ {
+  "attributeName": "Foraging Speed",
+  "bazaarName": "SHARD_FOXTROT",
+  "rarity": "COMMON",
+  "shardId": "C49",
+  "shardName": "Foxtrot"
+ },
+ {
+  "attributeName": "Cheapstake",
+  "bazaarName": "SHARD_COD",
+  "rarity": "COMMON",
+  "shardId": "C5",
+  "shardName": "Cod"
+ },
+ {
+  "attributeName": "Torrhus Mastery",
+  "bazaarName": "SHARD_FIREFOX",
+  "rarity": "COMMON",
+  "shardId": "C52",
+  "shardName": "Firefox"
+ },
+ {
+  "attributeName": "Diurnal Animal",
+  "bazaarName": "SHARD_GROUNDHOG",
+  "rarity": "COMMON",
+  "shardId": "C55",
+  "shardName": "Groundhog"
+ },
+ {
+  "attributeName": "Torrhus Diver",
+  "bazaarName": "SHARD_TIMIL",
+  "rarity": "COMMON",
+  "shardId": "C56",
+  "shardName": "Timil"
+ },
+ {
+  "attributeName": "Airborne Resistance",
+  "bazaarName": "SHARD_BLUE_JAY",
+  "rarity": "COMMON",
+  "shardId": "C58",
+  "shardName": "Blue Jay"
+ },
+ {
+  "attributeName": "Animal Resistance",
+  "bazaarName": "SHARD_HOWLING_SPIRIT",
+  "rarity": "COMMON",
+  "shardId": "C6",
+  "shardName": "Howling Spirit"
+ },
+ {
+  "attributeName": "Chocolate Speed",
+  "bazaarName": "SHARD_BUNBUN",
+  "rarity": "COMMON",
+  "shardId": "C61",
+  "shardName": "Bunbun"
+ },
+ {
+  "attributeName": "Honey Haul",
+  "bazaarName": "SHARD_HONEYBUZZ",
+  "rarity": "COMMON",
+  "shardId": "C64",
+  "shardName": "Honeybuzz"
+ },
+ {
+  "attributeName": "Honey Luck",
+  "bazaarName": "SHARD_POLLENDART",
+  "rarity": "COMMON",
+  "shardId": "C67",
+  "shardName": "Pollendart"
+ },
+ {
+  "attributeName": "Moonglade Mastery",
+  "bazaarName": "SHARD_PHANFLARE",
+  "rarity": "COMMON",
+  "shardId": "C7",
+  "shardName": "Phanflare"
+ },
+ {
+  "attributeName": "Aquatic Resistance",
+  "bazaarName": "SHARD_DUMPSTER_DIVER",
+  "rarity": "COMMON",
+  "shardId": "C8",
+  "shardName": "Dumpster Diver"
+ },
+ {
+  "attributeName": "Experience",
+  "bazaarName": "SHARD_LAPIS_ZOMBIE",
+  "rarity": "COMMON",
+  "shardId": "C9",
+  "shardName": "Lapis Zombie"
+ },
+ {
+  "attributeName": "Earth Elemental",
+  "bazaarName": "SHARD_TERRA",
+  "rarity": "EPIC",
+  "shardId": "E1",
+  "shardName": "Terra"
+ },
+ {
+  "attributeName": "Echo of Atomized",
+  "bazaarName": "SHARD_IGUANA",
+  "rarity": "EPIC",
+  "shardId": "E10",
+  "shardName": "Iguana"
+ },
+ {
+  "attributeName": "Lucky Rod",
+  "bazaarName": "SHARD_MORAY_EEL",
+  "rarity": "EPIC",
+  "shardId": "E11",
+  "shardName": "Moray Eel"
+ },
+ {
+  "attributeName": "Special Upgrades",
+  "bazaarName": "SHARD_SPECIAL_ZEALOT",
+  "rarity": "EPIC",
+  "shardId": "E12",
+  "shardName": "Special Zealot"
+ },
+ {
+  "attributeName": "Lunar Power",
+  "bazaarName": "SHARD_LUNAR_MOTH",
+  "rarity": "EPIC",
+  "shardId": "E13",
+  "shardName": "Lunar Moth"
+ },
+ {
+  "attributeName": "Trophy Hunter",
+  "bazaarName": "SHARD_FIRE_EEL",
+  "rarity": "EPIC",
+  "shardId": "E14",
+  "shardName": "Fire Eel"
+ },
+ {
+  "attributeName": "Deep Technique",
+  "bazaarName": "SHARD_BAL",
+  "rarity": "EPIC",
+  "shardId": "E15",
+  "shardName": "Bal"
+ },
+ {
+  "attributeName": "Sack Size",
+  "bazaarName": "SHARD_HIDEONSACK",
+  "rarity": "EPIC",
+  "shardId": "E16",
+  "shardName": "Hideonsack"
+ },
+ {
+  "attributeName": "Fishing Speed",
+  "bazaarName": "SHARD_WATER_HYDRA",
+  "rarity": "EPIC",
+  "shardId": "E17",
+  "shardName": "Water Hydra"
+ },
+ {
+  "attributeName": "Infernal Ruler",
+  "bazaarName": "SHARD_FLARE",
+  "rarity": "EPIC",
+  "shardId": "E18",
+  "shardName": "Flare"
+ },
+ {
+  "attributeName": "Sky High",
+  "bazaarName": "SHARD_MURDERWING",
+  "rarity": "EPIC",
+  "shardId": "E19",
+  "shardName": "Murderwing"
+ },
+ {
+  "attributeName": "Frost Elemental",
+  "bazaarName": "SHARD_CRYO",
+  "rarity": "EPIC",
+  "shardId": "E2",
+  "shardName": "Cryo"
+ },
+ {
+  "attributeName": "Sea Wisdom",
+  "bazaarName": "SHARD_SEA_EMPEROR",
+  "rarity": "EPIC",
+  "shardId": "E20",
+  "shardName": "Loch Emperor"
+ },
+ {
+  "attributeName": "Reborn",
+  "bazaarName": "SHARD_PRINCE",
+  "rarity": "EPIC",
+  "shardId": "E21",
+  "shardName": "Prince"
+ },
+ {
+  "attributeName": "Echo of Essence",
+  "bazaarName": "SHARD_KOMODO_DRAGON",
+  "rarity": "EPIC",
+  "shardId": "E22",
+  "shardName": "Komodo Dragon"
+ },
+ {
+  "attributeName": "Outstanding Fisher",
+  "bazaarName": "SHARD_BLUE_CRAB",
+  "rarity": "EPIC",
+  "shardId": "E23",
+  "shardName": "Blue Crab"
+ },
+ {
+  "attributeName": "Faker",
+  "bazaarName": "SHARD_MIMIC",
+  "rarity": "EPIC",
+  "shardId": "E24",
+  "shardName": "Mimic"
+ },
+ {
+  "attributeName": "Slayer Progress",
+  "bazaarName": "SHARD_WOLVERINE",
+  "rarity": "EPIC",
+  "shardId": "E25",
+  "shardName": "Wolverine"
+ },
+ {
+  "attributeName": "Shell",
+  "bazaarName": "SHARD_SHELLWISE",
+  "rarity": "EPIC",
+  "shardId": "E26",
+  "shardName": "Shellwise"
+ },
+ {
+  "attributeName": "Warrior",
+  "bazaarName": "SHARD_BARBARIAN_DUKE_X",
+  "rarity": "EPIC",
+  "shardId": "E27",
+  "shardName": "Barbarian Duke X"
+ },
+ {
+  "attributeName": "Why Not More",
+  "bazaarName": "SHARD_TOUCAN",
+  "rarity": "EPIC",
+  "shardId": "E28",
+  "shardName": "Toucan"
+ },
+ {
+  "attributeName": "Wind Elemental",
+  "bazaarName": "SHARD_AERO",
+  "rarity": "EPIC",
+  "shardId": "E3",
+  "shardName": "Aero"
+ },
+ {
+  "attributeName": "Echo of Ruler",
+  "bazaarName": "SHARD_CAIMAN",
+  "rarity": "EPIC",
+  "shardId": "E30",
+  "shardName": "Caiman"
+ },
+ {
+  "attributeName": "Solar Power",
+  "bazaarName": "SHARD_FIREFLY",
+  "rarity": "EPIC",
+  "shardId": "E31",
+  "shardName": "Firefly"
+ },
+ {
+  "attributeName": "Echo of Hunter",
+  "bazaarName": "SHARD_SEA_SERPENT",
+  "rarity": "EPIC",
+  "shardId": "E32",
+  "shardName": "Sea Serpent"
+ },
+ {
+  "attributeName": "Veil",
+  "bazaarName": "SHARD_GHOST",
+  "rarity": "EPIC",
+  "shardId": "E33",
+  "shardName": "Ghost"
+ },
+ {
+  "attributeName": "Mana Regeneration",
+  "bazaarName": "SHARD_XYZ",
+  "rarity": "EPIC",
+  "shardId": "E34",
+  "shardName": "XYZ"
+ },
+ {
+  "attributeName": "Hunt Wisdom",
+  "bazaarName": "SHARD_LEATHERBACK",
+  "rarity": "EPIC",
+  "shardId": "E35",
+  "shardName": "Leatherback"
+ },
+ {
+  "attributeName": "Cavern Wisdom",
+  "bazaarName": "SHARD_CAVERNSHADE",
+  "rarity": "EPIC",
+  "shardId": "E36",
+  "shardName": "Cavernshade"
+ },
+ {
+  "attributeName": "Garden Wisdom",
+  "bazaarName": "SHARD_DRAGONFLY",
+  "rarity": "EPIC",
+  "shardId": "E37",
+  "shardName": "Dragonfly"
+ },
+ {
+  "attributeName": "Mythological Tracker",
+  "bazaarName": "SHARD_SPHINX",
+  "rarity": "EPIC",
+  "shardId": "E39",
+  "shardName": "Sphinx"
+ },
+ {
+  "attributeName": "Foraging Wisdom",
+  "bazaarName": "SHARD_PANDARAI",
+  "rarity": "EPIC",
+  "shardId": "E4",
+  "shardName": "Pandarai"
+ },
+ {
+  "attributeName": "King of Greed",
+  "bazaarName": "SHARD_KING_MINOS",
+  "rarity": "EPIC",
+  "shardId": "E42",
+  "shardName": "King Minos"
+ },
+ {
+  "attributeName": "Ghastly Distraction",
+  "bazaarName": "SHARD_DIVE_GHAST",
+  "rarity": "EPIC",
+  "shardId": "E43",
+  "shardName": "Dive Ghast"
+ },
+ {
+  "attributeName": "Forager's Fortune",
+  "bazaarName": "SHARD_SILKBREEZE",
+  "rarity": "EPIC",
+  "shardId": "E44",
+  "shardName": "Silkbreeze"
+ },
+ {
+  "attributeName": "Devouring Spread",
+  "bazaarName": "SHARD_GEMZIE",
+  "rarity": "EPIC",
+  "shardId": "E45",
+  "shardName": "Gemzie"
+ },
+ {
+  "attributeName": "Divine Rabbit Luck",
+  "bazaarName": "SHARD_RABBIT_GODMOTHER",
+  "rarity": "EPIC",
+  "shardId": "E46",
+  "shardName": "Rabbit Godmother"
+ },
+ {
+  "attributeName": "Fisher's Fortune",
+  "bazaarName": "SHARD_GIANT_ISOPOD",
+  "rarity": "EPIC",
+  "shardId": "E47",
+  "shardName": "Giant Isopod"
+ },
+ {
+  "attributeName": "Attack Speed",
+  "bazaarName": "SHARD_BURNINGSOUL",
+  "rarity": "EPIC",
+  "shardId": "E48",
+  "shardName": "Inferno Demonlord"
+ },
+ {
+  "attributeName": "Honey Refill",
+  "bazaarName": "SHARD_QUEEN_BEE",
+  "rarity": "EPIC",
+  "shardId": "E49",
+  "shardName": "Queen Bee"
+ },
+ {
+  "attributeName": "Excellent Karma",
+  "bazaarName": "SHARD_LEVIATHAN",
+  "rarity": "EPIC",
+  "shardId": "E5",
+  "shardName": "Leviathan"
+ },
+ {
+  "attributeName": "Catacombs Explorer",
+  "bazaarName": "SHARD_BONZO",
+  "rarity": "EPIC",
+  "shardId": "E51",
+  "shardName": "Bonzo"
+ },
+ {
+  "attributeName": "Lathering Greed",
+  "bazaarName": "SHARD_BEEHEEMOTH",
+  "rarity": "EPIC",
+  "shardId": "E52",
+  "shardName": "Beeheemoth"
+ },
+ {
+  "attributeName": "Catacombs Graduate",
+  "bazaarName": "SHARD_SCARF",
+  "rarity": "EPIC",
+  "shardId": "E54",
+  "shardName": "Scarf"
+ },
+ {
+  "attributeName": "Dominance",
+  "bazaarName": "SHARD_THORN",
+  "rarity": "EPIC",
+  "shardId": "E57",
+  "shardName": "Thorn"
+ },
+ {
+  "attributeName": "Social Wisdom",
+  "bazaarName": "SHARD_MOUNTAIN_GOAT",
+  "rarity": "EPIC",
+  "shardId": "E58",
+  "shardName": "Mountain Goat"
+ },
+ {
+  "attributeName": "Echo of Resistance",
+  "bazaarName": "SHARD_ALLIGATOR",
+  "rarity": "EPIC",
+  "shardId": "E6",
+  "shardName": "Alligator"
+ },
+ {
+  "attributeName": "Glossy Fortune",
+  "bazaarName": "SHARD_SCATHA",
+  "rarity": "EPIC",
+  "shardId": "E60",
+  "shardName": "Scatha"
+ },
+ {
+  "attributeName": "Royal Riches",
+  "bazaarName": "SHARD_NILBOG",
+  "rarity": "EPIC",
+  "shardId": "E63",
+  "shardName": "Nilbog"
+ },
+ {
+  "attributeName": "Freezing Spread",
+  "bazaarName": "SHARD_LITTLEFOOT",
+  "rarity": "EPIC",
+  "shardId": "E66",
+  "shardName": "Littlefoot"
+ },
+ {
+  "attributeName": "Berry Mogul",
+  "bazaarName": "SHARD_FENLORD",
+  "rarity": "EPIC",
+  "shardId": "E7",
+  "shardName": "Fenlord"
+ },
+ {
+  "attributeName": "Pickaxe Cooldown",
+  "bazaarName": "SHARD_ABYSSAL_MINER",
+  "rarity": "EPIC",
+  "shardId": "E8",
+  "shardName": "Abyssal Miner"
+ },
+ {
+  "attributeName": "Hunter's Suppress",
+  "bazaarName": "SHARD_BASILISK",
+  "rarity": "EPIC",
+  "shardId": "E9",
+  "shardName": "Basilisk"
+ },
+ {
+  "attributeName": "Shadow Elemental",
+  "bazaarName": "SHARD_TENEBRIS",
+  "rarity": "LEGENDARY",
+  "shardId": "L1",
+  "shardName": "Tenebris"
+ },
+ {
+  "attributeName": "Egg Finder",
+  "bazaarName": "SHARD_RABBIT_GODFATHER",
+  "rarity": "LEGENDARY",
+  "shardId": "L10",
+  "shardName": "Rabbit Godfather"
+ },
+ {
+  "attributeName": "Charmed",
+  "bazaarName": "SHARD_NAGA",
+  "rarity": "LEGENDARY",
+  "shardId": "L11",
+  "shardName": "Naga"
+ },
+ {
+  "attributeName": "Book Wisdom",
+  "bazaarName": "SHARD_LAPIS_CREEPER",
+  "rarity": "LEGENDARY",
+  "shardId": "L12",
+  "shardName": "Lapis Creeper"
+ },
+ {
+  "attributeName": "Wart Eater",
+  "bazaarName": "SHARD_WARTYBUG",
+  "rarity": "LEGENDARY",
+  "shardId": "L13",
+  "shardName": "Wartybug"
+ },
+ {
+  "attributeName": "Payback",
+  "bazaarName": "SHARD_SPIKE",
+  "rarity": "LEGENDARY",
+  "shardId": "L14",
+  "shardName": "Spike"
+ },
+ {
+  "attributeName": "Vitality",
+  "bazaarName": "SHARD_KRAKEN",
+  "rarity": "LEGENDARY",
+  "shardId": "L15",
+  "shardName": "Kraken"
+ },
+ {
+  "attributeName": "Unlimited Torment",
+  "bazaarName": "SHARD_TAURUS",
+  "rarity": "LEGENDARY",
+  "shardId": "L17",
+  "shardName": "Taurus"
+ },
+ {
+  "attributeName": "Pity",
+  "bazaarName": "SHARD_DAEMON",
+  "rarity": "LEGENDARY",
+  "shardId": "L18",
+  "shardName": "Daemon"
+ },
+ {
+  "attributeName": "Snow Elemental",
+  "bazaarName": "SHARD_BLIZZARD",
+  "rarity": "LEGENDARY",
+  "shardId": "L2",
+  "shardName": "Blizzard"
+ },
+ {
+  "attributeName": "Star Bait",
+  "bazaarName": "SHARD_MOLTENFISH",
+  "rarity": "LEGENDARY",
+  "shardId": "L20",
+  "shardName": "Moltenfish"
+ },
+ {
+  "attributeName": "Echo of Tracking",
+  "bazaarName": "SHARD_DOOMSPIRAL",
+  "rarity": "LEGENDARY",
+  "shardId": "L21",
+  "shardName": "Doomspiral"
+ },
+ {
+  "attributeName": "Splendor",
+  "bazaarName": "SHARD_MACAW",
+  "rarity": "LEGENDARY",
+  "shardId": "L22",
+  "shardName": "Macaw"
+ },
+ {
+  "attributeName": "Help From Above",
+  "bazaarName": "SHARD_SHINYFISH",
+  "rarity": "LEGENDARY",
+  "shardId": "L23",
+  "shardName": "Shinyfish"
+ },
+ {
+  "attributeName": "Wings of Destiny",
+  "bazaarName": "SHARD_ANANKE",
+  "rarity": "LEGENDARY",
+  "shardId": "L24",
+  "shardName": "Ananke"
+ },
+ {
+  "attributeName": "Tuning Box",
+  "bazaarName": "SHARD_HIDEONBOX",
+  "rarity": "LEGENDARY",
+  "shardId": "L25",
+  "shardName": "Hideonbox"
+ },
+ {
+  "attributeName": "Crimson Hook",
+  "bazaarName": "SHARD_LORD_JAWBUS",
+  "rarity": "LEGENDARY",
+  "shardId": "L26",
+  "shardName": "Lord Jawbus"
+ },
+ {
+  "attributeName": "Matriarch Cubs",
+  "bazaarName": "SHARD_HELLWISP",
+  "rarity": "LEGENDARY",
+  "shardId": "L27",
+  "shardName": "Hellwisp"
+ },
+ {
+  "attributeName": "Magic Find",
+  "bazaarName": "SHARD_CINDER_BAT",
+  "rarity": "LEGENDARY",
+  "shardId": "L28",
+  "shardName": "Cinderbat"
+ },
+ {
+  "attributeName": "Hunter's Karma",
+  "bazaarName": "SHARD_MEGALITH",
+  "rarity": "LEGENDARY",
+  "shardId": "L29",
+  "shardName": "Megalith"
+ },
+ {
+  "attributeName": "Storm Elemental",
+  "bazaarName": "SHARD_TEMPEST",
+  "rarity": "LEGENDARY",
+  "shardId": "L3",
+  "shardName": "Tempest"
+ },
+ {
+  "attributeName": "Elite",
+  "bazaarName": "SHARD_POWER_DRAGON",
+  "rarity": "LEGENDARY",
+  "shardId": "L30",
+  "shardName": "Power Dragon"
+ },
+ {
+  "attributeName": "Pet Wisdom",
+  "bazaarName": "SHARD_CONDOR",
+  "rarity": "LEGENDARY",
+  "shardId": "L31",
+  "shardName": "Condor"
+ },
+ {
+  "attributeName": "Starborn",
+  "bazaarName": "SHARD_SUN_FISH",
+  "rarity": "LEGENDARY",
+  "shardId": "L32",
+  "shardName": "Sun Fish"
+ },
+ {
+  "attributeName": "Veteran",
+  "bazaarName": "SHARD_APEX_DRAGON",
+  "rarity": "LEGENDARY",
+  "shardId": "L33",
+  "shardName": "Apex Dragon"
+ },
+ {
+  "attributeName": "Tracking",
+  "bazaarName": "SHARD_DODO",
+  "rarity": "LEGENDARY",
+  "shardId": "L34",
+  "shardName": "Dodo"
+ },
+ {
+  "attributeName": "Queenly Echo",
+  "bazaarName": "SHARD_QUEEN_SNAKE",
+  "rarity": "LEGENDARY",
+  "shardId": "L35",
+  "shardName": "Queen Snake"
+ },
+ {
+  "attributeName": "Unlimited Power",
+  "bazaarName": "SHARD_JORMUNG",
+  "rarity": "LEGENDARY",
+  "shardId": "L36",
+  "shardName": "Jormung"
+ },
+ {
+  "attributeName": "Treasure Fisher",
+  "bazaarName": "SHARD_GHOST_CRAB",
+  "rarity": "LEGENDARY",
+  "shardId": "L38",
+  "shardName": "Ghost Crab"
+ },
+ {
+  "attributeName": "Unlimited Energy",
+  "bazaarName": "SHARD_ETHERDRAKE",
+  "rarity": "LEGENDARY",
+  "shardId": "L39",
+  "shardName": "Etherdrake"
+ },
+ {
+  "attributeName": "Reptiloid",
+  "bazaarName": "SHARD_CHAMELEON",
+  "rarity": "LEGENDARY",
+  "shardId": "L4",
+  "shardName": "Chameleon"
+ },
+ {
+  "attributeName": "Tough Claws",
+  "bazaarName": "SHARD_GRIZZLY_BEAR",
+  "rarity": "LEGENDARY",
+  "shardId": "L40",
+  "shardName": "Grizzly Bear"
+ },
+ {
+  "attributeName": "Ultimate DNA",
+  "bazaarName": "SHARD_GALAXY_FISH",
+  "rarity": "LEGENDARY",
+  "shardId": "L41",
+  "shardName": "Galaxy Fish"
+ },
+ {
+  "attributeName": "Almighty Echo",
+  "bazaarName": "SHARD_MOLTHORN",
+  "rarity": "LEGENDARY",
+  "shardId": "L42",
+  "shardName": "Molthorn"
+ },
+ {
+  "attributeName": "Echo of Elemental",
+  "bazaarName": "SHARD_STARBORN",
+  "rarity": "LEGENDARY",
+  "shardId": "L44",
+  "shardName": "Starborn"
+ },
+ {
+  "attributeName": "Cocoon Chance",
+  "bazaarName": "SHARD_PRIMORDIAL",
+  "rarity": "LEGENDARY",
+  "shardId": "L45",
+  "shardName": "Primordial"
+ },
+ {
+  "attributeName": "Groovy Radar",
+  "bazaarName": "SHARD_COCOALEECH",
+  "rarity": "LEGENDARY",
+  "shardId": "L46",
+  "shardName": "Cocoaleech"
+ },
+ {
+  "attributeName": "Bayou Hook",
+  "bazaarName": "SHARD_TITANOBOA",
+  "rarity": "LEGENDARY",
+  "shardId": "L47",
+  "shardName": "Titanoboa"
+ },
+ {
+  "attributeName": "Miracle Chance",
+  "bazaarName": "",
+  "rarity": "LEGENDARY",
+  "shardId": "L49",
+  "shardName": "Rainbug"
+ },
+ {
+  "attributeName": "Loch Hook",
+  "bazaarName": "SHARD_NESSIE",
+  "rarity": "LEGENDARY",
+  "shardId": "L5",
+  "shardName": "Nessie"
+ },
+ {
+  "attributeName": "Unique Bonus",
+  "bazaarName": "SHARD_FLORA",
+  "rarity": "LEGENDARY",
+  "shardId": "L52",
+  "shardName": "Flora"
+ },
+ {
+  "attributeName": "Slayer Discount",
+  "bazaarName": "SHARD_PARAGON",
+  "rarity": "LEGENDARY",
+  "shardId": "L54",
+  "shardName": "Paragon"
+ },
+ {
+  "attributeName": "Greenhouse Speed",
+  "bazaarName": "SHARD_TIMESTALK_CLONE",
+  "rarity": "LEGENDARY",
+  "shardId": "L57",
+  "shardName": "Timestalk Clone"
+ },
+ {
+  "attributeName": "Echo of Echoes",
+  "bazaarName": "SHARD_TIAMAT",
+  "rarity": "LEGENDARY",
+  "shardId": "L6",
+  "shardName": "Tiamat"
+ },
+ {
+  "attributeName": "Cold Resistance",
+  "bazaarName": "SHARD_WUMPA",
+  "rarity": "LEGENDARY",
+  "shardId": "L60",
+  "shardName": "Wumpa"
+ },
+ {
+  "attributeName": "Echo of Wisdom",
+  "bazaarName": "SHARD_WYVERN",
+  "rarity": "LEGENDARY",
+  "shardId": "L7",
+  "shardName": "Wyvern"
+ },
+ {
+  "attributeName": "Cloak Improvement",
+  "bazaarName": "SHARD_TORTOISE",
+  "rarity": "LEGENDARY",
+  "shardId": "L8",
+  "shardName": "Tortoise"
+ },
+ {
+  "attributeName": "Unlimited Fortitude",
+  "bazaarName": "SHARD_ENDSTONE_PROTECTOR",
+  "rarity": "LEGENDARY",
+  "shardId": "L9",
+  "shardName": "End Stone Protector"
+ },
+ {
+  "attributeName": "Forest Elemental",
+  "bazaarName": "SHARD_SYLVAN",
+  "rarity": "RARE",
+  "shardId": "R1",
+  "shardName": "Sylvan"
+ },
+ {
+  "attributeName": "Fancy Visit",
+  "bazaarName": "SHARD_INVISIBUG",
+  "rarity": "RARE",
+  "shardId": "R10",
+  "shardName": "Invisibug"
+ },
+ {
+  "attributeName": "Moonglade Serendipity",
+  "bazaarName": "SHARD_PIRANHA",
+  "rarity": "RARE",
+  "shardId": "R11",
+  "shardName": "Piranha"
+ },
+ {
+  "attributeName": "Catacombs Box",
+  "bazaarName": "SHARD_HIDEONGEON",
+  "rarity": "RARE",
+  "shardId": "R13",
+  "shardName": "Hideongeon"
+ },
+ {
+  "attributeName": "Bone Font",
+  "bazaarName": "SHARD_LAPIS_SKELETON",
+  "rarity": "RARE",
+  "shardId": "R15",
+  "shardName": "Lapis Skeleton"
+ },
+ {
+  "attributeName": "Crop Bug",
+  "bazaarName": "SHARD_CROPEETLE",
+  "rarity": "RARE",
+  "shardId": "R16",
+  "shardName": "Beetle"
+ },
+ {
+  "attributeName": "Undead Fortune",
+  "bazaarName": "SHARD_DROWNED",
+  "rarity": "RARE",
+  "shardId": "R18",
+  "shardName": "Drowned"
+ },
+ {
+  "attributeName": "Helix Sharpening",
+  "bazaarName": "SHARD_VULTURE",
+  "rarity": "RARE",
+  "shardId": "R19",
+  "shardName": "Vulture"
+ },
+ {
+  "attributeName": "Torrent Elemental",
+  "bazaarName": "SHARD_CASCADE",
+  "rarity": "RARE",
+  "shardId": "R2",
+  "shardName": "Cascade"
+ },
+ {
+  "attributeName": "Atomized Mithril",
+  "bazaarName": "SHARD_STAR_SENTRY",
+  "rarity": "RARE",
+  "shardId": "R21",
+  "shardName": "Star Sentry"
+ },
+ {
+  "attributeName": "Kuudra's Box",
+  "bazaarName": "SHARD_HIDEONDRA",
+  "rarity": "RARE",
+  "shardId": "R22",
+  "shardName": "Hideondra"
+ },
+ {
+  "attributeName": "Dwarven Serendipity",
+  "bazaarName": "SHARD_ABYSSAL_LANTERN",
+  "rarity": "RARE",
+  "shardId": "R23",
+  "shardName": "Abyssal Lanternfish"
+ },
+ {
+  "attributeName": "Essence of Arthropods",
+  "bazaarName": "SHARD_ARACHNE",
+  "rarity": "RARE",
+  "shardId": "R24",
+  "shardName": "Arachne"
+ },
+ {
+  "attributeName": "Cookie Eater",
+  "bazaarName": "SHARD_BITBUG",
+  "rarity": "RARE",
+  "shardId": "R25",
+  "shardName": "Bitbug"
+ },
+ {
+  "attributeName": "Essence of Crimson",
+  "bazaarName": "SHARD_LAVA_LEECH",
+  "rarity": "RARE",
+  "shardId": "R26",
+  "shardName": "Lava Leech"
+ },
+ {
+  "attributeName": "Essence of Unliving",
+  "bazaarName": "SHARD_REVENANT",
+  "rarity": "RARE",
+  "shardId": "R27",
+  "shardName": "Revenant"
+ },
+ {
+  "attributeName": "Catacombs Cap",
+  "bazaarName": "SHARD_FOLF",
+  "rarity": "RARE",
+  "shardId": "R28",
+  "shardName": "Folf"
+ },
+ {
+  "attributeName": "Crystal Serendipity",
+  "bazaarName": "SHARD_SILENTDEPTH",
+  "rarity": "RARE",
+  "shardId": "R29",
+  "shardName": "Silentdepth"
+ },
+ {
+  "attributeName": "Lightning Elemental",
+  "bazaarName": "SHARD_BOLT",
+  "rarity": "RARE",
+  "shardId": "R3",
+  "shardName": "Bolt"
+ },
+ {
+  "attributeName": "Deadeye",
+  "bazaarName": "SHARD_SKELETOR",
+  "rarity": "RARE",
+  "shardId": "R30",
+  "shardName": "Skeletor"
+ },
+ {
+  "attributeName": "Atomized Crystals",
+  "bazaarName": "SHARD_THYST",
+  "rarity": "RARE",
+  "shardId": "R31",
+  "shardName": "Thyst"
+ },
+ {
+  "attributeName": "Diamond Frog",
+  "bazaarName": "SHARD_SEA_SHINE",
+  "rarity": "RARE",
+  "shardId": "R32",
+  "shardName": "Seashine"
+ },
+ {
+  "attributeName": "Quartz Speed",
+  "bazaarName": "SHARD_QUARTZFANG",
+  "rarity": "RARE",
+  "shardId": "R33",
+  "shardName": "Quartzfang"
+ },
+ {
+  "attributeName": "Accessory Size",
+  "bazaarName": "SHARD_HIDEONRING",
+  "rarity": "RARE",
+  "shardId": "R34",
+  "shardName": "Hideonring"
+ },
+ {
+  "attributeName": "Winter's Serendipity",
+  "bazaarName": "SHARD_SNOWFIN",
+  "rarity": "RARE",
+  "shardId": "R35",
+  "shardName": "Snowfin"
+ },
+ {
+  "attributeName": "Lifeline",
+  "bazaarName": "SHARD_KADA_KNIGHT",
+  "rarity": "RARE",
+  "shardId": "R36",
+  "shardName": "Kada Knight"
+ },
+ {
+  "attributeName": "Chop",
+  "bazaarName": "SHARD_HUMMINGBIRD",
+  "rarity": "RARE",
+  "shardId": "R37",
+  "shardName": "Hummingbird"
+ },
+ {
+  "attributeName": "Rabbit Crew",
+  "bazaarName": "SHARD_CARROT_KING",
+  "rarity": "RARE",
+  "shardId": "R38",
+  "shardName": "Carrot King"
+ },
+ {
+  "attributeName": "Breeze",
+  "bazaarName": "SHARD_WITHER_SPECTER",
+  "rarity": "RARE",
+  "shardId": "R39",
+  "shardName": "Wither Spectre"
+ },
+ {
+  "attributeName": "Animal Expertise",
+  "bazaarName": "SHARD_BAMBLOOM",
+  "rarity": "RARE",
+  "shardId": "R4",
+  "shardName": "Bambloom"
+ },
+ {
+  "attributeName": "Battle Tracker",
+  "bazaarName": "SHARD_BADGER",
+  "rarity": "RARE",
+  "shardId": "R40",
+  "shardName": "Badger"
+ },
+ {
+  "attributeName": "Ignition",
+  "bazaarName": "SHARD_MATCHO",
+  "rarity": "RARE",
+  "shardId": "R42",
+  "shardName": "Matcho"
+ },
+ {
+  "attributeName": "Visitor Copper",
+  "bazaarName": "SHARD_LADYBUG",
+  "rarity": "RARE",
+  "shardId": "R43",
+  "shardName": "Ladybug"
+ },
+ {
+  "attributeName": "Extreme Pressure",
+  "bazaarName": "SHARD_LUMISQUID",
+  "rarity": "RARE",
+  "shardId": "R44",
+  "shardName": "Lumisquid"
+ },
+ {
+  "attributeName": "Pure Reptile",
+  "bazaarName": "SHARD_CROCODILE",
+  "rarity": "RARE",
+  "shardId": "R45",
+  "shardName": "Crocodile"
+ },
+ {
+  "attributeName": "Animal Fortune",
+  "bazaarName": "SHARD_WILD_HOG",
+  "rarity": "RARE",
+  "shardId": "R46",
+  "shardName": "Wild Hog"
+ },
+ {
+  "attributeName": "Berry Enjoyer",
+  "bazaarName": "SHARD_BULLFROG",
+  "rarity": "RARE",
+  "shardId": "R47",
+  "shardName": "Bullfrog"
+ },
+ {
+  "attributeName": "Essence of the Forest",
+  "bazaarName": "SHARD_DREADWING",
+  "rarity": "RARE",
+  "shardId": "R49",
+  "shardName": "Dreadwing"
+ },
+ {
+  "attributeName": "Frog Legs",
+  "bazaarName": "SHARD_TOAD",
+  "rarity": "RARE",
+  "shardId": "R5",
+  "shardName": "Toad"
+ },
+ {
+  "attributeName": "Deep Diving",
+  "bazaarName": "SHARD_JOYDIVE",
+  "rarity": "RARE",
+  "shardId": "R50",
+  "shardName": "Joydive"
+ },
+ {
+  "attributeName": "Atomized Glacite",
+  "bazaarName": "SHARD_STALAGMIGHT",
+  "rarity": "RARE",
+  "shardId": "R51",
+  "shardName": "Stalagmight"
+ },
+ {
+  "attributeName": "Fungy Luck",
+  "bazaarName": "SHARD_FUNGLOOM",
+  "rarity": "RARE",
+  "shardId": "R52",
+  "shardName": "Fungloom"
+ },
+ {
+  "attributeName": "Eelastic",
+  "bazaarName": "SHARD_EEL",
+  "rarity": "RARE",
+  "shardId": "R53",
+  "shardName": "Eel"
+ },
+ {
+  "attributeName": "Hunter's Grasp",
+  "bazaarName": "SHARD_KING_COBRA",
+  "rarity": "RARE",
+  "shardId": "R54",
+  "shardName": "King Cobra"
+ },
+ {
+  "attributeName": "Critter Fortune",
+  "bazaarName": "SHARD_HEWVER",
+  "rarity": "RARE",
+  "shardId": "R55",
+  "shardName": "Hewver"
+ },
+ {
+  "attributeName": "Blazing Fortune",
+  "bazaarName": "SHARD_LAVA_FLAME",
+  "rarity": "RARE",
+  "shardId": "R56",
+  "shardName": "Lava Flame"
+ },
+ {
+  "attributeName": "Essence of Dragons",
+  "bazaarName": "SHARD_DRACONIC",
+  "rarity": "RARE",
+  "shardId": "R57",
+  "shardName": "Draconic"
+ },
+ {
+  "attributeName": "Battle Experience",
+  "bazaarName": "SHARD_FALCON",
+  "rarity": "RARE",
+  "shardId": "R58",
+  "shardName": "Falcon"
+ },
+ {
+  "attributeName": "Crimson Serendipity",
+  "bazaarName": "SHARD_INFERNO_KOI",
+  "rarity": "RARE",
+  "shardId": "R59",
+  "shardName": "Inferno Koi"
+ },
+ {
+  "attributeName": "Essence of Ice",
+  "bazaarName": "SHARD_GLACITE_WALKER",
+  "rarity": "RARE",
+  "shardId": "R6",
+  "shardName": "Glacite Walker"
+ },
+ {
+  "attributeName": "Essence of Wither",
+  "bazaarName": "SHARD_WITHER",
+  "rarity": "RARE",
+  "shardId": "R60",
+  "shardName": "Wither"
+ },
+ {
+  "attributeName": "Echo of Sharpening",
+  "bazaarName": "SHARD_GECKO",
+  "rarity": "RARE",
+  "shardId": "R61",
+  "shardName": "Gecko"
+ },
+ {
+  "attributeName": "Construct Fortune",
+  "bazaarName": "SHARD_WIKI_TIKI",
+  "rarity": "RARE",
+  "shardId": "R62",
+  "shardName": "Wiki Tiki"
+ },
+ {
+  "attributeName": "Mythological Fortune",
+  "bazaarName": "SHARD_MINOTAUR",
+  "rarity": "RARE",
+  "shardId": "R63",
+  "shardName": "Minotaur"
+ },
+ {
+  "attributeName": "Cubic Fortune",
+  "bazaarName": "SHARD_HIVETHIEF",
+  "rarity": "RARE",
+  "shardId": "R64",
+  "shardName": "Hivethief"
+ },
+ {
+  "attributeName": "Boot Fisher",
+  "bazaarName": "SHARD_MAGGOT",
+  "rarity": "RARE",
+  "shardId": "R65",
+  "shardName": "Maggot"
+ },
+ {
+  "attributeName": "Sleepy Spread",
+  "bazaarName": "SHARD_SNOOZLE",
+  "rarity": "RARE",
+  "shardId": "R66",
+  "shardName": "Snoozle"
+ },
+ {
+  "attributeName": "Flying Fortune",
+  "bazaarName": "SHARD_PARAKEET",
+  "rarity": "RARE",
+  "shardId": "R67",
+  "shardName": "Parakeet"
+ },
+ {
+  "attributeName": "Thunder Speed",
+  "bazaarName": "SHARD_THUNDER",
+  "rarity": "RARE",
+  "shardId": "R68",
+  "shardName": "Thunder"
+ },
+ {
+  "attributeName": "Cavernous Tracker",
+  "bazaarName": "SHARD_ROCKMITE",
+  "rarity": "RARE",
+  "shardId": "R69",
+  "shardName": "Rockmite"
+ },
+ {
+  "attributeName": "Beacon Zealot",
+  "bazaarName": "SHARD_BEACONMITE",
+  "rarity": "RARE",
+  "shardId": "R7",
+  "shardName": "Beaconmite"
+ },
+ {
+  "attributeName": "Floor Fortune",
+  "bazaarName": "SHARD_ANTEATER",
+  "rarity": "RARE",
+  "shardId": "R70",
+  "shardName": "Anteater"
+ },
+ {
+  "attributeName": "Scrap Chance",
+  "bazaarName": "SHARD_SCRAPPY",
+  "rarity": "RARE",
+  "shardId": "R72",
+  "shardName": "Scrappy"
+ },
+ {
+  "attributeName": "Elusive Fortune",
+  "bazaarName": "SHARD_HIDEYHO",
+  "rarity": "RARE",
+  "shardId": "R73",
+  "shardName": "Hideyho"
+ },
+ {
+  "attributeName": "Great Treasure",
+  "bazaarName": "SHARD_MANTIS_SHRIMP",
+  "rarity": "RARE",
+  "shardId": "R74",
+  "shardName": "Mantis Shrimp"
+ },
+ {
+  "attributeName": "Subterranean Fortune",
+  "bazaarName": "SHARD_CHUCKWALLA",
+  "rarity": "RARE",
+  "shardId": "R75",
+  "shardName": "Chuckwalla"
+ },
+ {
+  "attributeName": "Woodland Fortune",
+  "bazaarName": "SHARD_HIDEONFLOOR",
+  "rarity": "RARE",
+  "shardId": "R76",
+  "shardName": "Hideonfloor"
+ },
+ {
+  "attributeName": "Greedy Goblin",
+  "bazaarName": "SHARD_GIMMIEGOLD",
+  "rarity": "RARE",
+  "shardId": "R77",
+  "shardName": "Gimmiegold"
+ },
+ {
+  "attributeName": "Frozen Fortune",
+  "bazaarName": "SHARD_BILLYGOAT",
+  "rarity": "RARE",
+  "shardId": "R78",
+  "shardName": "Billygoat"
+ },
+ {
+  "attributeName": "Arcane Fortune",
+  "bazaarName": "SHARD_HIDEONWALL",
+  "rarity": "RARE",
+  "shardId": "R79",
+  "shardName": "Hideonwall"
+ },
+ {
+  "attributeName": "Great Karma",
+  "bazaarName": "SHARD_LIZARD_KING",
+  "rarity": "RARE",
+  "shardId": "R8",
+  "shardName": "Lizard King"
+ },
+ {
+  "attributeName": "Underwater Tracker",
+  "bazaarName": "SHARD_NOZZLENOSE",
+  "rarity": "RARE",
+  "shardId": "R80",
+  "shardName": "Nozzlenose"
+ },
+ {
+  "attributeName": "Refined Luck",
+  "bazaarName": "SHARD_STONEWORM",
+  "rarity": "RARE",
+  "shardId": "R81",
+  "shardName": "Stoneworm"
+ },
+ {
+  "attributeName": "Foraging Tracker",
+  "bazaarName": "SHARD_FLUFFLING",
+  "rarity": "RARE",
+  "shardId": "R82",
+  "shardName": "Fluffling"
+ },
+ {
+  "attributeName": "Torrhus Serendipity",
+  "bazaarName": "SHARD_STINGRAY",
+  "rarity": "RARE",
+  "shardId": "R83",
+  "shardName": "Stingray"
+ },
+ {
+  "attributeName": "Mutation Serendipity",
+  "bazaarName": "SHARD_ZOMBUDDY",
+  "rarity": "RARE",
+  "shardId": "R84",
+  "shardName": "Zombuddy"
+ },
+ {
+  "attributeName": "Forest Serendipity",
+  "bazaarName": "SHARD_PUCK",
+  "rarity": "RARE",
+  "shardId": "R85",
+  "shardName": "Puck"
+ },
+ {
+  "attributeName": "Essence of Fossils",
+  "bazaarName": "SHARD_TROODON",
+  "rarity": "RARE",
+  "shardId": "R86",
+  "shardName": "Troodon"
+ },
+ {
+  "attributeName": "Arthropod Fortune",
+  "bazaarName": "SHARD_BLACK_WIDOW",
+  "rarity": "RARE",
+  "shardId": "R87",
+  "shardName": "Black Widow"
+ },
+ {
+  "attributeName": "Atomized Whispers",
+  "bazaarName": "SHARD_PANGOLIN",
+  "rarity": "RARE",
+  "shardId": "R88",
+  "shardName": "Pangolin"
+ },
+ {
+  "attributeName": "Aquatic Fortune",
+  "bazaarName": "SHARD_GIANT_WATER_BUG",
+  "rarity": "RARE",
+  "shardId": "R89",
+  "shardName": "Giant Water Bug"
+ },
+ {
+  "attributeName": "Hunter's Pressure",
+  "bazaarName": "SHARD_PYTHON",
+  "rarity": "RARE",
+  "shardId": "R9",
+  "shardName": "Python"
+ },
+ {
+  "attributeName": "Rekindle",
+  "bazaarName": "SHARD_MURKBAT",
+  "rarity": "RARE",
+  "shardId": "R91",
+  "shardName": "Murkbat"
+ },
+ {
+  "attributeName": "Echo of Buckets",
+  "bazaarName": "SHARD_GOLDOLOT",
+  "rarity": "RARE",
+  "shardId": "R92",
+  "shardName": "Goldolot"
+ },
+ {
+  "attributeName": "Mythic Rabbit Luck",
+  "bazaarName": "SHARD_RABBIT_NEIGHBOR",
+  "rarity": "RARE",
+  "shardId": "R94",
+  "shardName": "Rabbit Neighbor"
+ },
+ {
+  "attributeName": "First Sweep",
+  "bazaarName": "SHARD_TORRID",
+  "rarity": "RARE",
+  "shardId": "R95",
+  "shardName": "Torrid"
+ },
+ {
+  "attributeName": "Axe Cooldown",
+  "bazaarName": "SHARD_DRYBARK",
+  "rarity": "RARE",
+  "shardId": "R97",
+  "shardName": "Drybark"
+ },
+ {
+  "attributeName": "Wood Elemental",
+  "bazaarName": "SHARD_BRAMBLE",
+  "rarity": "UNCOMMON",
+  "shardId": "U1",
+  "shardName": "Bramble"
+ },
+ {
+  "attributeName": "Pest Luck",
+  "bazaarName": "SHARD_PEST",
+  "rarity": "UNCOMMON",
+  "shardId": "U10",
+  "shardName": "Field Mouse"
+ },
+ {
+  "attributeName": "Pest Cooldown",
+  "bazaarName": "SHARD_MOTH",
+  "rarity": "UNCOMMON",
+  "shardId": "U100",
+  "shardName": "Moth"
+ },
+ {
+  "attributeName": "Enchanted Farmer",
+  "bazaarName": "SHARD_MOSQUITO",
+  "rarity": "UNCOMMON",
+  "shardId": "U103",
+  "shardName": "Mosquito"
+ },
+ {
+  "attributeName": "Legendary Rabbit Luck",
+  "bazaarName": "SHARD_RABBIT_CAT",
+  "rarity": "UNCOMMON",
+  "shardId": "U106",
+  "shardName": "Rabbit Cat"
+ },
+ {
+  "attributeName": "Forest Trap",
+  "bazaarName": "SHARD_MOSSYBIT",
+  "rarity": "UNCOMMON",
+  "shardId": "U11",
+  "shardName": "Mossybit"
+ },
+ {
+  "attributeName": "Mana Steal",
+  "bazaarName": "SHARD_RAIN_SLIME",
+  "rarity": "UNCOMMON",
+  "shardId": "U12",
+  "shardName": "Rain Slime"
+ },
+ {
+  "attributeName": "Humanoid Ruler",
+  "bazaarName": "SHARD_WETWING",
+  "rarity": "UNCOMMON",
+  "shardId": "U14",
+  "shardName": "Wetwing"
+ },
+ {
+  "attributeName": "Dragon Shortbow Improvement",
+  "bazaarName": "SHARD_SEER",
+  "rarity": "UNCOMMON",
+  "shardId": "U15",
+  "shardName": "Seer"
+ },
+ {
+  "attributeName": "Mangrove Sharpening",
+  "bazaarName": "SHARD_HERON",
+  "rarity": "UNCOMMON",
+  "shardId": "U16",
+  "shardName": "Heron"
+ },
+ {
+  "attributeName": "Witch's Fortune",
+  "bazaarName": "SHARD_SEA_WITCH",
+  "rarity": "UNCOMMON",
+  "shardId": "U17",
+  "shardName": "Sea Witch"
+ },
+ {
+  "attributeName": "Speed",
+  "bazaarName": "SHARD_OBSIDIAN_DEFENDER",
+  "rarity": "UNCOMMON",
+  "shardId": "U18",
+  "shardName": "Obsidian Defender"
+ },
+ {
+  "attributeName": "Pest Fortune",
+  "bazaarName": "SHARD_CRICKET",
+  "rarity": "UNCOMMON",
+  "shardId": "U19",
+  "shardName": "Cricket"
+ },
+ {
+  "attributeName": "Water Elemental",
+  "bazaarName": "SHARD_TIDE",
+  "rarity": "UNCOMMON",
+  "shardId": "U2",
+  "shardName": "Tide"
+ },
+ {
+  "attributeName": "Lost and Found",
+  "bazaarName": "SHARD_SALMON",
+  "rarity": "UNCOMMON",
+  "shardId": "U20",
+  "shardName": "Salmon"
+ },
+ {
+  "attributeName": "Hunter's Fang",
+  "bazaarName": "SHARD_VIPER",
+  "rarity": "UNCOMMON",
+  "shardId": "U21",
+  "shardName": "Viper"
+ },
+ {
+  "attributeName": "Pest Ruler",
+  "bazaarName": "SHARD_PRAYING_MANTIS",
+  "rarity": "UNCOMMON",
+  "shardId": "U22",
+  "shardName": "Praying Mantis"
+ },
+ {
+  "attributeName": "Lily Tracker",
+  "bazaarName": "SHARD_LOTUM",
+  "rarity": "UNCOMMON",
+  "shardId": "U23",
+  "shardName": "Lotum"
+ },
+ {
+  "attributeName": "Undead Ruler",
+  "bazaarName": "SHARD_ZOMBIE_SOLDIER",
+  "rarity": "UNCOMMON",
+  "shardId": "U24",
+  "shardName": "Zombie Soldier"
+ },
+ {
+  "attributeName": "Strong Arms",
+  "bazaarName": "SHARD_BAMBULEAF",
+  "rarity": "UNCOMMON",
+  "shardId": "U25",
+  "shardName": "Bambuleaf"
+ },
+ {
+  "attributeName": "Dwarven Training",
+  "bazaarName": "SHARD_TREASURE_HOARDER",
+  "rarity": "UNCOMMON",
+  "shardId": "U26",
+  "shardName": "Treasure Hoarder"
+ },
+ {
+  "attributeName": "Life Recovery",
+  "bazaarName": "SHARD_SYCOPHANT",
+  "rarity": "UNCOMMON",
+  "shardId": "U27",
+  "shardName": "Sycophant"
+ },
+ {
+  "attributeName": "Mangrove Collector",
+  "bazaarName": "SHARD_SEAGULL",
+  "rarity": "UNCOMMON",
+  "shardId": "U28",
+  "shardName": "Seagull"
+ },
+ {
+  "attributeName": "Woodland Ruler",
+  "bazaarName": "SHARD_ENT",
+  "rarity": "UNCOMMON",
+  "shardId": "U29",
+  "shardName": "Ent"
+ },
+ {
+  "attributeName": "Stone Elemental",
+  "bazaarName": "SHARD_QUAKE",
+  "rarity": "UNCOMMON",
+  "shardId": "U3",
+  "shardName": "Quake"
+ },
+ {
+  "attributeName": "Combo",
+  "bazaarName": "SHARD_SOUL_OF_THE_ALPHA",
+  "rarity": "UNCOMMON",
+  "shardId": "U30",
+  "shardName": "Soul of the Alpha"
+ },
+ {
+  "attributeName": "Strong Legs",
+  "bazaarName": "SHARD_MOCHIBEAR",
+  "rarity": "UNCOMMON",
+  "shardId": "U31",
+  "shardName": "Mochibear"
+ },
+ {
+  "attributeName": "Infection",
+  "bazaarName": "SHARD_MAGMA_SLUG",
+  "rarity": "UNCOMMON",
+  "shardId": "U32",
+  "shardName": "Magma Slug"
+ },
+ {
+  "attributeName": "Arthropod Ruler",
+  "bazaarName": "SHARD_FLAMING_SPIDER",
+  "rarity": "UNCOMMON",
+  "shardId": "U33",
+  "shardName": "Flaming Spider"
+ },
+ {
+  "attributeName": "Kat's Favorite",
+  "bazaarName": "SHARD_KIWI",
+  "rarity": "UNCOMMON",
+  "shardId": "U34",
+  "shardName": "Kiwi"
+ },
+ {
+  "attributeName": "Ender Ruler",
+  "bazaarName": "SHARD_BRUISER",
+  "rarity": "UNCOMMON",
+  "shardId": "U36",
+  "shardName": "Zealot Bruiser"
+ },
+ {
+  "attributeName": "Magmatic Ruler",
+  "bazaarName": "SHARD_STRIDER_SURFER",
+  "rarity": "UNCOMMON",
+  "shardId": "U38",
+  "shardName": "Stridersurfer"
+ },
+ {
+  "attributeName": "Battle Frog",
+  "bazaarName": "SHARD_RANA",
+  "rarity": "UNCOMMON",
+  "shardId": "U39",
+  "shardName": "Rana"
+ },
+ {
+  "attributeName": "Fig Collector",
+  "bazaarName": "SHARD_SPARROW",
+  "rarity": "UNCOMMON",
+  "shardId": "U4",
+  "shardName": "Sparrow"
+ },
+ {
+  "attributeName": "Infiltration",
+  "bazaarName": "SHARD_TERMITE",
+  "rarity": "UNCOMMON",
+  "shardId": "U40",
+  "shardName": "Earthworm"
+ },
+ {
+  "attributeName": "Golden Frog",
+  "bazaarName": "SHARD_FLIP_FLOPPER",
+  "rarity": "UNCOMMON",
+  "shardId": "U41",
+  "shardName": "Flipflopper"
+ },
+ {
+  "attributeName": "Frozen Ruler",
+  "bazaarName": "SHARD_POLARIS",
+  "rarity": "UNCOMMON",
+  "shardId": "U42",
+  "shardName": "Polaris"
+ },
+ {
+  "attributeName": "Foraging Frog",
+  "bazaarName": "SHARD_TREEFROG",
+  "rarity": "UNCOMMON",
+  "shardId": "U43",
+  "shardName": "Treefrog"
+ },
+ {
+  "attributeName": "Compost Speed",
+  "bazaarName": "SHARD_BAYOU_SLUDGE",
+  "rarity": "UNCOMMON",
+  "shardId": "U44",
+  "shardName": "Bayou Sludge"
+ },
+ {
+  "attributeName": "Battle Arachnid",
+  "bazaarName": "SHARD_AREITA",
+  "rarity": "UNCOMMON",
+  "shardId": "U45",
+  "shardName": "Areita"
+ },
+ {
+  "attributeName": "Airborne Ruler",
+  "bazaarName": "SHARD_BLUEBIRD",
+  "rarity": "UNCOMMON",
+  "shardId": "U46",
+  "shardName": "Bluebird"
+ },
+ {
+  "attributeName": "Flexible Fisher",
+  "bazaarName": "SHARD_OSEDAX",
+  "rarity": "UNCOMMON",
+  "shardId": "U47",
+  "shardName": "Osedax"
+ },
+ {
+  "attributeName": "Arcane Ruler",
+  "bazaarName": "SHARD_DUPLICO",
+  "rarity": "UNCOMMON",
+  "shardId": "U48",
+  "shardName": "Duplico"
+ },
+ {
+  "attributeName": "Buckle Fisher",
+  "bazaarName": "SHARD_LITTERBUG",
+  "rarity": "UNCOMMON",
+  "shardId": "U49",
+  "shardName": "Litterbug"
+ },
+ {
+  "attributeName": "Gold Bait",
+  "bazaarName": "SHARD_GOLDFIN",
+  "rarity": "UNCOMMON",
+  "shardId": "U5",
+  "shardName": "Goldfin"
+ },
+ {
+  "attributeName": "Titanoboa Tracker",
+  "bazaarName": "SHARD_WATER_SNAKE",
+  "rarity": "UNCOMMON",
+  "shardId": "U50",
+  "shardName": "Water Snake"
+ },
+ {
+  "attributeName": "Zealot Tracker",
+  "bazaarName": "SHARD_GAZER",
+  "rarity": "UNCOMMON",
+  "shardId": "U51",
+  "shardName": "Gazer"
+ },
+ {
+  "attributeName": "Visitor Honey",
+  "bazaarName": "SHARD_HONEYBUG",
+  "rarity": "UNCOMMON",
+  "shardId": "U52",
+  "shardName": "Honeybug"
+ },
+ {
+  "attributeName": "Yeti Tracker",
+  "bazaarName": "SHARD_SHUDDERSQUID",
+  "rarity": "UNCOMMON",
+  "shardId": "U53",
+  "shardName": "Shuddersquid"
+ },
+ {
+  "attributeName": "Soul Snatcher",
+  "bazaarName": "SHARD_SOLSNATCHER",
+  "rarity": "UNCOMMON",
+  "shardId": "U55",
+  "shardName": "Solsnatcher"
+ },
+ {
+  "attributeName": "Bucket Greed",
+  "bazaarName": "SHARD_SEPIALOT",
+  "rarity": "UNCOMMON",
+  "shardId": "U56",
+  "shardName": "Sepialot"
+ },
+ {
+  "attributeName": "Honey Serendipity",
+  "bazaarName": "SHARD_HONEY_BADGER",
+  "rarity": "UNCOMMON",
+  "shardId": "U57",
+  "shardName": "Honey Badger"
+ },
+ {
+  "attributeName": "Subterranean Ruler",
+  "bazaarName": "SHARD_DRIFTLING",
+  "rarity": "UNCOMMON",
+  "shardId": "U58",
+  "shardName": "Driftling"
+ },
+ {
+  "attributeName": "Lily Puncher",
+  "bazaarName": "SHARD_TEWTIL",
+  "rarity": "UNCOMMON",
+  "shardId": "U59",
+  "shardName": "Tewtil"
+ },
+ {
+  "attributeName": "Mountain Climber",
+  "bazaarName": "SHARD_TROGLOBYTE",
+  "rarity": "UNCOMMON",
+  "shardId": "U6",
+  "shardName": "Troglobyte"
+ },
+ {
+  "attributeName": "Mythological Ruler",
+  "bazaarName": "SHARD_MINOS_HUNTER",
+  "rarity": "UNCOMMON",
+  "shardId": "U60",
+  "shardName": "Minos Hunter"
+ },
+ {
+  "attributeName": "Builder Discount",
+  "bazaarName": "SHARD_WOODCHUCKER",
+  "rarity": "UNCOMMON",
+  "shardId": "U61",
+  "shardName": "Woodchucker"
+ },
+ {
+  "attributeName": "Starlyn Training",
+  "bazaarName": "SHARD_SOLAR",
+  "rarity": "UNCOMMON",
+  "shardId": "U62",
+  "shardName": "Solar"
+ },
+ {
+  "attributeName": "Visitor Compost",
+  "bazaarName": "SHARD_PARCHED",
+  "rarity": "UNCOMMON",
+  "shardId": "U63",
+  "shardName": "Parched"
+ },
+ {
+  "attributeName": "Bartender Discount",
+  "bazaarName": "SHARD_BLOODBAT",
+  "rarity": "UNCOMMON",
+  "shardId": "U64",
+  "shardName": "Bloodbat"
+ },
+ {
+  "attributeName": "Combat Trap",
+  "bazaarName": "SHARD_DUSTYBIT",
+  "rarity": "UNCOMMON",
+  "shardId": "U65",
+  "shardName": "Dustybit"
+ },
+ {
+  "attributeName": "Visitor Cheese",
+  "bazaarName": "SHARD_WOODLOUSE",
+  "rarity": "UNCOMMON",
+  "shardId": "U67",
+  "shardName": "Woodlouse"
+ },
+ {
+  "attributeName": "Galatea Training",
+  "bazaarName": "SHARD_EMBER",
+  "rarity": "UNCOMMON",
+  "shardId": "U68",
+  "shardName": "Ember"
+ },
+ {
+  "attributeName": "Bayou Treasure",
+  "bazaarName": "SHARD_CHEEKY_TIKI",
+  "rarity": "UNCOMMON",
+  "shardId": "U69",
+  "shardName": "Cheeky Tiki"
+ },
+ {
+  "attributeName": "Bigger Box",
+  "bazaarName": "SHARD_HIDEONCAVE",
+  "rarity": "UNCOMMON",
+  "shardId": "U7",
+  "shardName": "Hideoncave"
+ },
+ {
+  "attributeName": "Visitor Plant",
+  "bazaarName": "SHARD_RED_PANDA",
+  "rarity": "UNCOMMON",
+  "shardId": "U70",
+  "shardName": "Red Panda"
+ },
+ {
+  "attributeName": "Animal Ruler",
+  "bazaarName": "SHARD_SPRAWL",
+  "rarity": "UNCOMMON",
+  "shardId": "U71",
+  "shardName": "Sprawl"
+ },
+ {
+  "attributeName": "Tiki Tracker",
+  "bazaarName": "SHARD_SNEAKY_TIKI",
+  "rarity": "UNCOMMON",
+  "shardId": "U72",
+  "shardName": "Sneaky Tiki"
+ },
+ {
+  "attributeName": "Construct Ruler",
+  "bazaarName": "SHARD_SHRIEKY_TIKI",
+  "rarity": "UNCOMMON",
+  "shardId": "U75",
+  "shardName": "Shrieky Tiki"
+ },
+ {
+  "attributeName": "Helix Timber",
+  "bazaarName": "SHARD_WOODPECKER",
+  "rarity": "UNCOMMON",
+  "shardId": "U76",
+  "shardName": "Woodpecker"
+ },
+ {
+  "attributeName": "Mite Spawner",
+  "bazaarName": "SHARD_HONEYMITE",
+  "rarity": "UNCOMMON",
+  "shardId": "U78",
+  "shardName": "Honeymite"
+ },
+ {
+  "attributeName": "Elusive Ruler",
+  "bazaarName": "SHARD_QUEEN_ANT",
+  "rarity": "UNCOMMON",
+  "shardId": "U79",
+  "shardName": "Queen Ant"
+ },
+ {
+  "attributeName": "Good Karma",
+  "bazaarName": "SHARD_SALAMANDER",
+  "rarity": "UNCOMMON",
+  "shardId": "U8",
+  "shardName": "Salamander"
+ },
+ {
+  "attributeName": "Helix Collector",
+  "bazaarName": "SHARD_HAWK",
+  "rarity": "UNCOMMON",
+  "shardId": "U82",
+  "shardName": "Hawk"
+ },
+ {
+  "attributeName": "Ticket Discount",
+  "bazaarName": "SHARD_JUNE_BUG",
+  "rarity": "UNCOMMON",
+  "shardId": "U85",
+  "shardName": "June Bug"
+ },
+ {
+  "attributeName": "Visitor Dung",
+  "bazaarName": "SHARD_DUNG_BEETLE",
+  "rarity": "UNCOMMON",
+  "shardId": "U88",
+  "shardName": "Dung Beetle"
+ },
+ {
+  "attributeName": "Echo of Boxes",
+  "bazaarName": "SHARD_CUBOA",
+  "rarity": "UNCOMMON",
+  "shardId": "U9",
+  "shardName": "Cuboa"
+ },
+ {
+  "attributeName": "Sprayonator Serendipity",
+  "bazaarName": "SHARD_RAT",
+  "rarity": "UNCOMMON",
+  "shardId": "U91",
+  "shardName": "Rat"
+ },
+ {
+  "attributeName": "Bonus Pest Chance",
+  "bazaarName": "SHARD_KEELED_SLUG",
+  "rarity": "UNCOMMON",
+  "shardId": "U94",
+  "shardName": "Keeled Slug"
+ },
+ {
+  "attributeName": "Filter Upgrade",
+  "bazaarName": "SHARD_MITE",
+  "rarity": "UNCOMMON",
+  "shardId": "U97",
+  "shardName": "Mite"
+ }
+]
