@@ -16,8 +16,11 @@ import java.io.IOException;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AppConfig {
 
-    /** TODO: nach dem Einrichten des Hetzner-Servers auf die eigene Domain setzen. */
-    public static final String DEFAULT_SERVER_URL = "https://tracker.example.com";
+    /** Eigener Server auf Hetzner (siehe server/README.md). */
+    public static final String DEFAULT_SERVER_URL = "https://lenox-tracker.duckdns.org";
+
+    /** Platzhalter aus frueheren Versionen, der evtl. noch in alten config.json-Dateien steht. */
+    private static final String OLD_PLACEHOLDER_URL = "https://tracker.example.com";
 
     private static final File CONFIG_FILE = new File(System.getProperty("user.home"),
             ".hypixeltracker/config.json");
@@ -31,7 +34,12 @@ public class AppConfig {
         ObjectMapper mapper = new ObjectMapper();
         if (CONFIG_FILE.exists()) {
             try {
-                return mapper.readValue(CONFIG_FILE, AppConfig.class);
+                AppConfig config = mapper.readValue(CONFIG_FILE, AppConfig.class);
+                if (config.serverUrl == null || config.serverUrl.isBlank()
+                        || config.serverUrl.equals(OLD_PLACEHOLDER_URL)) {
+                    config.serverUrl = DEFAULT_SERVER_URL;
+                }
+                return config;
             } catch (IOException e) {
                 System.err.println("Konnte Konfiguration nicht laden, verwende Standardwerte: " + e.getMessage());
             }

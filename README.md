@@ -32,8 +32,9 @@ Nutzer ihre Keys nicht in Anwendungen Dritter eintragen.
 - SkyBlock-Profile → brauchen einen Key und laufen über den eigenen Server
   im Ordner [`server/`](server/README.md). Nur der Server kennt den Key.
 
-Die Server-Adresse steht in `AppConfig.DEFAULT_SERVER_URL` und muss nach
-dem Einrichten des Servers auf die eigene Domain gesetzt werden.
+Die Server-Adresse steht in `AppConfig.DEFAULT_SERVER_URL`
+(aktuell `https://lenox-tracker.duckdns.org`) und kann von Nutzern unter
+"Einstellungen" überschrieben werden.
 
 ## Bekannte offene Punkte (TODO im Code)
 
