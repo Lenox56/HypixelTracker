@@ -25,9 +25,25 @@ direkt bei Hypixel ab.
 
 1. Auf <https://developer.hypixel.net> mit dem Minecraft-Account anmelden.
 2. Eine **neue Application** für dieses Projekt anlegen (ein Projekt = eine Application).
-3. Zum Testen reicht der Development-Key (läuft nach 3 Tagen ab, nicht zum Weitergeben).
-4. Damit andere die App nutzen dürfen: **Production-Key** beantragen und die App
-   beschreiben (Desktop-Tracker, Key nur auf dem Server, Caching, Rate-Limit pro Nutzer).
+3. Passenden Key-Typ wählen (siehe Tabelle) und die App im Antrag beschreiben
+   (Desktop-Tracker, Key nur auf dem Server, Caching, Rate-Limit pro Nutzer).
+
+| Key-Typ | Wofür | Limit | Für diesen Server |
+|---|---|---|---|
+| Development | Nur Entwickeln/Testen, läuft nach 3 Tagen ab | – | Nur lokal testen, nie weitergeben |
+| Personal | Kleine/private Community (Freunde, Gilde), muss genehmigt werden | 300 Anfragen / 5 min | Reicht für ein paar Dutzend Nutzer |
+| Production | Öffentlich verfügbare Projekte (z. B. .exe frei zum Download) | höher, nach Antrag | Nötig, sobald die App öffentlich verteilt wird |
+
+Der Server funktioniert mit jedem Key-Typ gleich, es ändert sich nur der Wert
+von `HYPIXEL_API_KEY` in der `.env`. Durch den Cache kostet ein Sync höchstens
+eine Hypixel-Anfrage pro Spieler alle `CACHE_TTL_SECONDS`, egal wie oft geklickt wird.
+
+**Mit Personal-Key** das Limit pro Nutzer senken, damit niemand durch das Abfragen
+vieler verschiedener Spieler allein das gemeinsame Limit (~60/min) aufbraucht:
+
+```
+CLIENT_REQUESTS_PER_MINUTE=10
+```
 
 ## Einrichtung auf Hetzner
 
