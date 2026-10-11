@@ -17,7 +17,7 @@ import java.util.Optional;
 public class HypixelClient {
 
     private static final String BASE_URL = "https://api.hypixel.net";
-    private static final String USER_AGENT = "HypixelTracker-Server/1.0";
+    private static final String USER_AGENT = "SkyBlockProgressTracker-Server/1.0";
 
     public record ApiResponse(int status, String body) {
     }

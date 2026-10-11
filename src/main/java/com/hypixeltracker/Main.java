@@ -25,7 +25,7 @@ public class Main extends Application {
         MainView mainView = new MainView(config);
         Scene scene = new Scene(mainView.build(), 1100, 750);
 
-        primaryStage.setTitle("Hypixel Tracker");
+        primaryStage.setTitle("SkyBlock Progress Tracker");
         addIcons(primaryStage);
         primaryStage.setScene(scene);
         primaryStage.show();

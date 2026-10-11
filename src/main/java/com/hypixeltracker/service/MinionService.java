@@ -12,10 +12,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Wertet die gebauten Minions aus. Quelle ist "crafted_generators"
- * (Eintraege wie "WHEAT_7"), seit API v2 unter member.player_data.
- * Gebaute Minions gelten fuer die ganze Coop, daher werden alle Mitglieder
- * eines Profils zusammengefasst.
+ * Wertet die gebauten Minions aus. Quelle sind die "minions" der
+ * Fortschrittsdaten vom Server (Eintraege wie "WHEAT_7", bereits ueber alle
+ * Coop-Mitglieder zusammengefasst).
  */
 public class MinionService {
 
@@ -29,15 +28,10 @@ public class MinionService {
         this.reference = reference;
     }
 
-    /** Alle gebauten Minion-Stufen ("WHEAT_7", ...) ueber die Coop bzw. alle Profile. */
-    public Set<String> readCraftedGenerators(JsonNode profilesResponse, boolean aggregate) {
+    /** Gebaute Minion-Stufen ("WHEAT_7", ...) aus den Fortschrittsdaten des Servers ("minions"). */
+    public Set<String> readCraftedGenerators(JsonNode progress) {
         Set<String> crafted = new HashSet<>();
-        for (JsonNode profile : ProfileUtil.relevantProfiles(profilesResponse, aggregate)) {
-            for (JsonNode member : profile.path("members")) {
-                member.path("player_data").path("crafted_generators").forEach(n -> crafted.add(n.asText()));
-                member.path("crafted_generators").forEach(n -> crafted.add(n.asText())); // aeltere API-Version
-            }
-        }
+        progress.path("minions").forEach(n -> crafted.add(n.asText()));
         return crafted;
     }
 
@@ -72,6 +66,6 @@ public class MinionService {
     }
 
     static String displayName(String type) {
-        return ProfileUtil.titleCase(type) + " Minion";
+        return TextUtil.titleCase(type) + " Minion";
     }
 }

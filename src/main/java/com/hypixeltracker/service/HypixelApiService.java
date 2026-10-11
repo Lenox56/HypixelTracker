@@ -19,13 +19,13 @@ import java.time.Duration;
  * (API-Policy: Nutzer duerfen ihre Keys nicht in Anwendungen Dritter
  * eintragen). Deshalb:
  * - Endpunkte ohne Key (Bazaar, Auktionen, Items) -> direkt an api.hypixel.net
- * - Profile (braucht einen Key) -> ueber den eigenen Server (Ordner server/),
- *   der den Key haelt und die Antworten zwischenspeichert.
+ * - Fortschrittsdaten (brauchen einen Key) -> ueber den eigenen Server
+ *   (Ordner server/), der den Key haelt, die Profile auswertet und zwischenspeichert.
  */
 public class HypixelApiService {
 
     private static final String HYPIXEL_URL = "https://api.hypixel.net";
-    private static final String USER_AGENT = "HypixelTracker/1.0";
+    private static final String USER_AGENT = "SkyBlockProgressTracker/1.0";
 
     private final HttpClient client = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(10))
@@ -42,12 +42,17 @@ public class HypixelApiService {
         this.serverUrl = serverUrl == null ? "" : serverUrl.replaceAll("/+$", "");
     }
 
-    /** Alle SkyBlock-Profile (Inseln) eines Spielers - ueber den eigenen Server. */
-    public JsonNode getProfiles(String playerUuid) throws IOException, InterruptedException {
+    /**
+     * Fortschrittsdaten eines Spielers (Attribute, Minions, Accessoires) vom eigenen
+     * Server. Der Server wertet die Profile aus und liefert nur diese Daten.
+     *
+     * @param aggregate true = ueber alle Profile zusammenfassen, sonst nur das aktive Profil
+     */
+    public JsonNode getProgress(String playerUuid, boolean aggregate) throws IOException, InterruptedException {
         if (serverUrl.isBlank()) {
             throw new IllegalStateException("Keine Server-Adresse hinterlegt. Bitte in den Einstellungen eintragen.");
         }
-        return getJson(serverUrl + "/v1/skyblock/profiles?uuid=" + playerUuid);
+        return getJson(serverUrl + "/v1/skyblock/progress?uuid=" + playerUuid + "&aggregate=" + aggregate);
     }
 
     /** Alle aktiven Auktionen, seitenweise (page 0 = neueste Seite zuerst laut API). */

@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.hypixeltracker.service.TestData.UUID;
-import static com.hypixeltracker.service.TestData.encodeItems;
-import static com.hypixeltracker.service.TestData.item;
 import static com.hypixeltracker.service.TestData.json;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -20,28 +17,20 @@ class AccessoryServiceTest {
     private final AccessoryService service = new AccessoryService();
 
     @Test
-    void readsAccessoriesFromBagInventoryAndBackpacks() throws Exception {
-        var profiles = json("""
-                {'profiles':[{'selected':true,'members':{'%s':{'inventory':{
-                  'bag_contents':{'talisman_bag':{'type':0,'data':'%s'}},
-                  'inv_contents':{'type':0,'data':'%s'},
-                  'backpack_contents':{'0':{'type':0,'data':'%s'}}
-                }}}}]}""".formatted(UUID,
-                encodeItems(item("SPEED_RING"), item("CANDY_TALISMAN")),
-                encodeItems(item("ASPECT_OF_THE_END")),
-                encodeItems(item("RED_CLAW_ARTIFACT"))));
+    void readsOwnedAccessoriesFromServerProgress() throws Exception {
+        var progress = json("{'accessories':{'inventoryApiEnabled':true,'owned':['SPEED_RING','CANDY_TALISMAN']}}");
 
-        AccessoryService.OwnedItems owned = service.readOwnedItems(profiles, UUID, false);
+        AccessoryService.OwnedItems owned = service.readOwnedItems(progress);
 
         assertTrue(owned.inventoryApiEnabled());
-        assertEquals(Set.of("SPEED_RING", "CANDY_TALISMAN", "ASPECT_OF_THE_END", "RED_CLAW_ARTIFACT"), owned.ids());
+        assertEquals(Set.of("SPEED_RING", "CANDY_TALISMAN"), owned.ids());
     }
 
     @Test
     void detectsDisabledInventoryApi() throws Exception {
-        var profiles = json("{'profiles':[{'selected':true,'members':{'%s':{}}}]}".formatted(UUID));
+        var progress = json("{'accessories':{'inventoryApiEnabled':false,'owned':[]}}");
 
-        assertFalse(service.readOwnedItems(profiles, UUID, false).inventoryApiEnabled());
+        assertFalse(service.readOwnedItems(progress).inventoryApiEnabled());
     }
 
     @Test

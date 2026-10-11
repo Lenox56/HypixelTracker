@@ -12,7 +12,7 @@ param(
 )
 
 # ---------------- Konfiguration ----------------
-$AppName        = "HypixelTracker"
+$AppName        = "SkyBlockProgressTracker"
 $MainJar        = "hypixeltracker-1.0.0.jar"
 $MainClass      = "com.hypixeltracker.Main"
 $InputDir       = "target"
@@ -92,4 +92,4 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-Write-Host "== Fertig! HypixelTracker-1.0.exe sollte jetzt hier liegen ==" -ForegroundColor Green
+Write-Host "== Fertig! $AppName-1.0.exe sollte jetzt hier liegen ==" -ForegroundColor Green

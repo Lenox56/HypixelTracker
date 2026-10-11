@@ -21,8 +21,8 @@ import java.util.function.Consumer;
 
 /**
  * Marktdaten ohne API-Key: Bazaar, Item-Datenbank und ein kompletter Scan
- * aller Auktionshaus-Seiten. Ergebnisse werden kurz zwischengespeichert,
- * damit Accessoire- und Flipping-Tab das AH nicht doppelt laden.
+ * aller Auktionshaus-Seiten (fuer die Preise fehlender Accessoires).
+ * Ergebnisse werden kurz zwischengespeichert.
  */
 public class MarketDataService {
 
@@ -58,7 +58,7 @@ public class MarketDataService {
             for (JsonNode item : apiService.getItemResources().path("items")) {
                 String id = item.path("id").asText("");
                 if (!id.isEmpty()) {
-                    map.put(id, new ItemInfo(id, ProfileUtil.stripColorCodes(item.path("name").asText(id)),
+                    map.put(id, new ItemInfo(id, TextUtil.stripColorCodes(item.path("name").asText(id)),
                             item.path("tier").asText(""), item.path("category").asText("")));
                 }
             }
@@ -70,7 +70,7 @@ public class MarketDataService {
     /** Lesbarer Name zu einer ID, ersatzweise aus der ID gebildet. */
     public String displayName(String id) throws IOException, InterruptedException {
         ItemInfo info = items().get(id);
-        return info != null ? info.name() : ProfileUtil.titleCase(id);
+        return info != null ? info.name() : TextUtil.titleCase(id);
     }
 
     public synchronized JsonNode bazaar() throws IOException, InterruptedException {
@@ -143,7 +143,7 @@ public class MarketDataService {
             result.computeIfAbsent(key, k -> new ArrayList<>()).add(new Listing(
                     auction.path("uuid").asText(),
                     key,
-                    ProfileUtil.stripColorCodes(auction.path("item_name").asText(key)),
+                    TextUtil.stripColorCodes(auction.path("item_name").asText(key)),
                     auction.path("starting_bid").asLong()));
         }
     }

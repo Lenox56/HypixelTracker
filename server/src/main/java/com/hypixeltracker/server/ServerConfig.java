@@ -24,7 +24,7 @@ public record ServerConfig(
                 apiKey,
                 intEnv(env, "PORT", 8080),
                 intEnv(env, "CACHE_TTL_SECONDS", 300),
-                intEnv(env, "CLIENT_REQUESTS_PER_MINUTE", 30),
+                intEnv(env, "CLIENT_REQUESTS_PER_MINUTE", 10),
                 Boolean.parseBoolean(env.getOrDefault("TRUST_PROXY_HEADERS", "false"))
         );
     }
