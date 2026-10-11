@@ -13,10 +13,11 @@ import java.time.Duration;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ProfilesHandlerTest {
+class ProgressHandlerTest {
 
     private static final String UUID = "069a79f444e94726a5befca90e38aaf5";
 
@@ -31,13 +32,13 @@ class ProfilesHandlerTest {
         }
     }
 
-    private String start(ProfilesHandler.ProfileFetcher fetcher, int requestsPerMinute) throws Exception {
+    private String start(ProgressHandler.ProfileFetcher fetcher, int requestsPerMinute) throws Exception {
         server = HttpServer.create(new InetSocketAddress("127.0.0.1", 0), 0);
-        server.createContext("/v1/skyblock/profiles", new ProfilesHandler(fetcher,
+        server.createContext("/v1/skyblock/progress", new ProgressHandler(fetcher,
                 new ResponseCache<>(Duration.ofMinutes(5), clock),
                 new ClientRateLimiter(requestsPerMinute, clock), false));
         server.start();
-        return "http://127.0.0.1:" + server.getAddress().getPort() + "/v1/skyblock/profiles";
+        return "http://127.0.0.1:" + server.getAddress().getPort() + "/v1/skyblock/progress";
     }
 
     private HttpResponse<String> get(String url) throws Exception {
@@ -45,11 +46,19 @@ class ProfilesHandlerTest {
     }
 
     @Test
-    void passesThroughAndCachesProfiles() throws Exception {
+    void returnsOnlyExtractedProgressAndCaches() throws Exception {
         AtomicInteger calls = new AtomicInteger();
+        String profiles = """
+                {"success":true,"profiles":[{"selected":true,"members":{
+                  "%s":{"attributes":{"stacks":{"SHARD_GROVE":5}},
+                        "player_data":{"crafted_generators":["WHEAT_1"]},
+                        "currencies":{"coin_purse":123456},
+                        "inventory":{"bag_contents":{"talisman_bag":{"data":"%s"}}}},
+                  "coopmate":{"player_data":{"crafted_generators":["CLAY_2"]}}}}]}"""
+                .formatted(UUID, NbtTestData.encodeItemIds("SPEED_RING"));
         String url = start(uuid -> {
             calls.incrementAndGet();
-            return new HypixelClient.ApiResponse(200, "{\"success\":true,\"profiles\":[]}");
+            return new HypixelClient.ApiResponse(200, profiles);
         }, 10);
 
         HttpResponse<String> first = get(url + "?uuid=" + UUID);
@@ -57,7 +66,10 @@ class ProfilesHandlerTest {
         HttpResponse<String> second = get(url + "?uuid=069A79F4-44E9-4726-A5BE-FCA90E38AAF5");
 
         assertEquals(200, first.statusCode());
-        assertEquals("{\"success\":true,\"profiles\":[]}", second.body());
+        assertEquals("{\"success\":true,\"attributes\":{\"SHARD_GROVE\":5},\"minions\":[\"CLAY_2\",\"WHEAT_1\"],"
+                + "\"accessories\":{\"inventoryApiEnabled\":true,\"owned\":[\"SPEED_RING\"]}}", second.body());
+        // Nichts von der rohen Antwort (z.B. Coins) verlaesst den Server
+        assertFalse(second.body().contains("coin_purse"));
         assertEquals(1, calls.get());
     }
 
@@ -107,7 +119,7 @@ class ProfilesHandlerTest {
 
     @Test
     void normalizeUuidAcceptsBothFormats() {
-        assertEquals(UUID, ProfilesHandler.normalizeUuid("069a79f4-44e9-4726-a5be-fca90e38aaf5"));
-        assertNull(ProfilesHandler.normalizeUuid("notch"));
+        assertEquals(UUID, ProgressHandler.normalizeUuid("069a79f4-44e9-4726-a5be-fca90e38aaf5"));
+        assertNull(ProgressHandler.normalizeUuid("notch"));
     }
 }

@@ -15,17 +15,10 @@ class MinionServiceTest {
     private final MinionService service = new MinionService();
 
     @Test
-    void mergesCraftedGeneratorsOfAllCoopMembers() throws Exception {
-        var profiles = json("""
-                {'profiles':[{'selected':true,'members':{
-                  'a':{'player_data':{'crafted_generators':['WHEAT_1','WHEAT_2']}},
-                  'b':{'player_data':{'crafted_generators':['WHEAT_12','COBBLESTONE_3']}},
-                  'c':{'crafted_generators':['CLAY_1']}
-                }},{'selected':false,'members':{'a':{'player_data':{'crafted_generators':['SNOW_5']}}}}]}""");
+    void readsCraftedGeneratorsFromServerProgress() throws Exception {
+        var progress = json("{'success':true,'minions':['WHEAT_1','WHEAT_12','COBBLESTONE_3']}");
 
-        assertEquals(Set.of("WHEAT_1", "WHEAT_2", "WHEAT_12", "COBBLESTONE_3", "CLAY_1"),
-                service.readCraftedGenerators(profiles, false));
-        assertTrue(service.readCraftedGenerators(profiles, true).contains("SNOW_5"));
+        assertEquals(Set.of("WHEAT_1", "WHEAT_12", "COBBLESTONE_3"), service.readCraftedGenerators(progress));
     }
 
     @Test

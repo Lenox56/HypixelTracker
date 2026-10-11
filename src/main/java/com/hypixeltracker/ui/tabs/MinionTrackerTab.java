@@ -80,8 +80,8 @@ public class MinionTrackerTab {
 
         BackgroundSync.run(syncButton, statusLabel, progress -> {
             String uuid = apiService.resolveUuid(username);
-            JsonNode profiles = apiService.getProfiles(uuid);
-            Set<String> crafted = minionService.readCraftedGenerators(profiles, aggregate);
+            JsonNode playerData = apiService.getProgress(uuid, aggregate);
+            Set<String> crafted = minionService.readCraftedGenerators(playerData);
             return new SyncResult(crafted.size(), minionService.buildOverview(crafted));
         }, result -> {
             List<Minion> list = result.minions();

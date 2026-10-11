@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 
-import static com.hypixeltracker.service.TestData.UUID;
 import static com.hypixeltracker.service.TestData.json;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -17,23 +16,12 @@ class AttributeServiceTest {
 
     private final AttributeService service = new AttributeService();
 
-    private JsonNode profiles() throws Exception {
-        return json("""
-                {'success':true,'profiles':[
-                  {'selected':false,'members':{'%1$s':{'attributes':{'stacks':{'SHARD_GROVE':40,'SHARD_MIST':2}}}}},
-                  {'selected':true, 'members':{'%1$s':{'attributes':{'stacks':{'SHARD_GROVE':5}}},
-                                               'otheruuid':{'attributes':{'stacks':{'SHARD_QUEEN_BEE':99}}}}}
-                ]}""".formatted(UUID));
-    }
-
     @Test
-    void readsOnlySelectedProfileAndOwnMember() throws Exception {
-        assertEquals(Map.of("SHARD_GROVE", 5), service.readStacks(profiles(), UUID, false));
-    }
+    void readsStacksFromServerProgress() throws Exception {
+        JsonNode progress = json("{'success':true,'attributes':{'SHARD_GROVE':5,'C2':3}}");
 
-    @Test
-    void aggregateTakesMaximumAcrossProfiles() throws Exception {
-        assertEquals(Map.of("SHARD_GROVE", 40, "SHARD_MIST", 2), service.readStacks(profiles(), UUID, true));
+        assertEquals(Map.of("SHARD_GROVE", 5, "C2", 3), service.readStacks(progress));
+        assertEquals(Map.of(), service.readStacks(json("{'success':true}")));
     }
 
     @Test

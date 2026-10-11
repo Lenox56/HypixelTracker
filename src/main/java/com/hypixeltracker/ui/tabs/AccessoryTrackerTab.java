@@ -106,8 +106,8 @@ public class AccessoryTrackerTab {
 
         BackgroundSync.run(syncButton, statusLabel, progress -> {
             String uuid = apiService.resolveUuid(username);
-            JsonNode profiles = apiService.getProfiles(uuid);
-            AccessoryService.OwnedItems owned = accessoryService.readOwnedItems(profiles, uuid, aggregate);
+            JsonNode playerData = apiService.getProgress(uuid, aggregate);
+            AccessoryService.OwnedItems owned = accessoryService.readOwnedItems(playerData);
 
             progress.accept("Lade Item-Datenbank...");
             Map<String, MarketDataService.ItemInfo> allItems = marketData.items();

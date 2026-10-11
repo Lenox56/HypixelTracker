@@ -1,21 +1,30 @@
-# HypixelTracker-Server
+# SkyBlock Progress Tracker – Server
 
-Kleiner Server, der den Hypixel-API-Key hält. Die Desktop-App fragt
-SkyBlock-Profile hier ab statt direkt bei Hypixel. So kann die App
+Kleiner Server, der den Hypixel-API-Key hält. Die Desktop-App holt ihre
+Fortschrittsdaten hier statt direkt bei Hypixel. So kann die App
 weitergegeben werden, **ohne dass jemand einen Key eintragen muss**
 (das verbietet die [Hypixel-API-Policy](https://developer.hypixel.net/policies/)).
 
 ```
-App (Nutzer A, B, C …) ──> dieser Server (hält den Key, Cache) ──> api.hypixel.net
+App (Nutzer A, B, C …) ──> dieser Server (Key, Cache, Auswertung) ──> api.hypixel.net
 ```
+
+**Kein API-Proxy:** Der Server gibt die Hypixel-Antwort nie roh weiter. Er
+wertet das Profil selbst aus und liefert nur die Daten, die die App anzeigt.
 
 Was der Server macht:
 
-- `GET /v1/skyblock/profiles?uuid=<uuid>` → Hypixel-Antwort unverändert durchgereicht
+- `GET /v1/skyblock/progress?uuid=<uuid>&aggregate=true|false` → nur die ausgewerteten Daten:
+  ```json
+  {"success": true,
+   "attributes":  {"SHARD_GROVE": 5},
+   "minions":     ["WHEAT_7", "COBBLESTONE_3"],
+   "accessories": {"inventoryApiEnabled": true, "owned": ["SPEED_RING"]}}
+  ```
 - `GET /health` → Statuscheck
 - Speichert Profile zwischen (Standard: 5 Minuten), damit nicht jeder Klick eine Hypixel-Anfrage kostet
 - Wertet die `RateLimit-*`-Header von Hypixel aus und pausiert, bevor das Limit des Keys überschritten wird
-- Begrenzt Anfragen pro Nutzer-IP (Standard: 30/Minute), damit niemand das gemeinsame Limit aufbraucht
+- Begrenzt Anfragen pro Nutzer-IP (`CLIENT_REQUESTS_PER_MINUTE`), damit niemand das gemeinsame Limit aufbraucht
 - Gibt den Key nie an Clients zurück, auch nicht in Fehlermeldungen
 
 Bazaar, Auktionen und Items brauchen keinen Key. Die fragt die App weiterhin
@@ -38,12 +47,9 @@ Der Server funktioniert mit jedem Key-Typ gleich, es ändert sich nur der Wert
 von `HYPIXEL_API_KEY` in der `.env`. Durch den Cache kostet ein Sync höchstens
 eine Hypixel-Anfrage pro Spieler alle `CACHE_TTL_SECONDS`, egal wie oft geklickt wird.
 
-**Mit Personal-Key** das Limit pro Nutzer senken, damit niemand durch das Abfragen
-vieler verschiedener Spieler allein das gemeinsame Limit (~60/min) aufbraucht:
-
-```
-CLIENT_REQUESTS_PER_MINUTE=10
-```
+Das Limit pro Nutzer steht standardmäßig auf 10 Anfragen pro Minute, damit
+niemand durch das Abfragen vieler verschiedener Spieler allein das gemeinsame
+Limit (~60/min beim Personal-Key) aufbraucht.
 
 ## Einrichtung auf Hetzner
 
@@ -83,7 +89,7 @@ chmod 600 .env   # nur root darf den Key lesen
 
 ```bash
 docker compose up -d --build
-docker compose logs -f api     # sollte "HypixelTracker-Server laeuft ..." zeigen
+docker compose logs -f api     # sollte "SkyBlock-Progress-Tracker-Server laeuft ..." zeigen
 curl https://tracker.deinedomain.de/health
 ```
 
@@ -122,5 +128,5 @@ HYPIXEL_API_KEY=dein-dev-key java -jar target/hypixeltracker-server.jar
 | `HYPIXEL_API_KEY` | – (Pflicht) | Key deiner Hypixel-Application |
 | `DOMAIN` | – | Domain für HTTPS über Caddy |
 | `CACHE_TTL_SECONDS` | `300` | Wie lange Profile zwischengespeichert werden |
-| `CLIENT_REQUESTS_PER_MINUTE` | `30` | Max. Anfragen pro Minute und Nutzer-IP |
+| `CLIENT_REQUESTS_PER_MINUTE` | `10` | Max. Anfragen pro Minute und Nutzer-IP |
 | `PORT` | `8080` | Interner Port (normalerweise nicht ändern) |

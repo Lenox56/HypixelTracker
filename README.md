@@ -1,17 +1,38 @@
-# HypixelTracker
+# SkyBlock Progress Tracker
+
+> **Unofficial fan project. Not affiliated with, endorsed by, or associated
+> with Hypixel Inc.** "Hypixel" and "SkyBlock" are trademarks of their
+> respective owners.
+
+**English summary:** A non-monetized desktop app for a small group of friends
+to track their own Hypixel SkyBlock progress (hunting attribute levels, missing
+accessories, minion tiers) and view Bazaar prices.
+
+- The API key is never included in the app, and users never enter their own key.
+- The only authenticated endpoint used is `/v2/skyblock/profiles`, called by
+  our own small backend (`server/`). The backend **does not proxy the API**:
+  it evaluates the profile on the server and returns only the derived progress
+  data the app displays (attribute shard counts, crafted minion tiers, owned
+  accessory IDs) – never the raw API response.
+- Responses are cached for 5 minutes per player, the `RateLimit-*` headers are
+  respected, and each client is limited to 10 requests per minute.
+- Bazaar, item and auction data use the public endpoints without a key.
+- No automated data collection, no player tracking, no auction sniping.
+
+---
 
 Desktop-App (Java/JavaFX) für Hypixel SkyBlock, basierend auf dem
-ursprünglichen AttributeTracker.
+ursprünglichen AttributeTracker. **Inoffizielles Fan-Projekt, nicht mit
+Hypixel verbunden und nicht von Hypixel unterstützt.**
 
 ## Module
 
 - `Attribute / Shards` – Hunting-Attribute mit Stufe, gesyphonten Shards
   und fehlenden Shards bis zur nächsten Stufe; nicht freigeschaltete Attribute
 - `Accessoires` – fehlende Accessoires (inkl. Upgrade-Stufen) mit aktuellem
-  Bazaar-/AH-Preis
+  Bazaar-Preis bzw. günstigstem AH-Sofortkauf
 - `Minions` – aktuelle vs. maximale Stufe je Minion-Typ, coop-weit
-- `AH / Bazaar Flipping` – Sofortkäufe deutlich unter dem nächsten Angebot
-  (Gewinn nach AH-Gebühren) und Bazaar-Margen nach Steuer mit Mindestvolumen
+- `Bazaar Flipping` – Bazaar-Margen nach Steuer mit Mindestvolumen
 - `Wiki-Suche` – freie Suche + Basis für kontextuelle Info-Icons
 
 **Accessoires** brauchen die Inventar-API: im Spiel unter
@@ -44,8 +65,10 @@ Laut [Hypixel-API-Policy](https://developer.hypixel.net/policies/) dürfen
 Nutzer ihre Keys nicht in Anwendungen Dritter eintragen.
 
 - Bazaar, Auktionen, Items → brauchen keinen Key, die App fragt direkt bei Hypixel.
-- SkyBlock-Profile → brauchen einen Key und laufen über den eigenen Server
-  im Ordner [`server/`](server/README.md). Nur der Server kennt den Key.
+- Fortschrittsdaten (Attribute, Minions, Accessoires) → brauchen einen Key und
+  kommen vom eigenen Server im Ordner [`server/`](server/README.md). Nur der
+  Server kennt den Key; er wertet die Profile selbst aus und gibt nur die
+  fertigen Fortschrittsdaten heraus, nie die rohe API-Antwort.
 
 Die Server-Adresse steht in `AppConfig.DEFAULT_SERVER_URL`
 (aktuell `https://lenox-tracker.duckdns.org`) und kann von Nutzern unter
@@ -55,8 +78,8 @@ Die Server-Adresse steht in `AppConfig.DEFAULT_SERVER_URL`
 
 - Rezept-/Materialabgleich für Accessoires und Minion-Upgrades
   (craftbar ja/nein, Materialkosten).
-- AH-Flipping vergleicht nur mit dem nächstgünstigeren Angebot; Haustiere
-  und Bücher mit mehreren Verzauberungen werden ausgelassen.
+- Eigenes Logo: `src/main/resources/icons/` und `packaging/icon.ico` enthalten
+  ein schlichtes Platzhalter-Icon (Lupe mit Diagramm).
 
 ## Als .exe bauen
 

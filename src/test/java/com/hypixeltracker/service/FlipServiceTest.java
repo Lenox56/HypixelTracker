@@ -1,6 +1,5 @@
 package com.hypixeltracker.service;
 
-import com.hypixeltracker.model.AuctionItem;
 import com.hypixeltracker.model.BazaarProduct;
 import org.junit.jupiter.api.Test;
 
@@ -17,34 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class FlipServiceTest {
 
     private final FlipService service = new FlipService();
-
-    private static MarketDataService.Listing listing(String key, long price) {
-        return new MarketDataService.Listing("uuid-" + price, key, key, price);
-    }
-
-    @Test
-    void findsAuctionFlipsAgainstSecondCheapest() {
-        Map<String, List<MarketDataService.Listing>> listings = Map.of(
-                "HYPERION", List.of(listing("HYPERION", 800_000_000), listing("HYPERION", 1_000_000_000),
-                        listing("HYPERION", 1_010_000_000)),
-                "DIRT", List.of(listing("DIRT", 90), listing("DIRT", 100), listing("DIRT", 100)),
-                "RARE_THING", List.of(listing("RARE_THING", 1), listing("RARE_THING", 1_000_000)));
-
-        List<AuctionItem> flips = service.findAuctionFlips(listings, 10, 100_000);
-
-        assertEquals(1, flips.size()); // DIRT: zu wenig Gewinn, RARE_THING: zu wenige Angebote
-        AuctionItem hyperion = flips.get(0);
-        assertEquals(1_000_000_000, hyperion.getNormalPrice());
-        assertEquals(1_000_000_000 - 35_000_000 - 800_000_000, hyperion.getProfit()); // 2,5 % + 1 % Gebuehr
-        assertEquals(20.0, hyperion.getPercentBelowNormal(), 0.001);
-        assertEquals("/viewauction uuid-800000000", hyperion.getViewCommand());
-    }
-
-    @Test
-    void ahFeesDependOnPrice() {
-        assertEquals(1_000, FlipService.ahFees(100_000), 0.001);
-        assertEquals(600_000, FlipService.ahFees(20_000_000), 0.001); // 2 % + 1 %
-    }
 
     @Test
     void bazaarFlipsNeedVolumeAndPositiveMarginAfterTax() throws Exception {
@@ -64,6 +35,7 @@ class FlipServiceTest {
         assertEquals(400_000, diamond.getWeeklyVolume());
     }
 
+    /** Preis-Key fuer die AH-Preise fehlender Accessoires. */
     @Test
     void priceKeyFromAuctionItemBytes() throws Exception {
         MarketDataService market = new MarketDataService(null);

@@ -14,9 +14,10 @@ import java.util.Map;
 /**
  * Wertet die Hunting-Attribute eines Spielers aus.
  *
- * Quelle: profiles[].members[uuid].attributes.stacks
- * (Shard-ID -> Anzahl gesyphonter Shards). Namen, Seltenheit und die
- * vollstaendige Liste aller Attribute kommen aus {@link ReferenceData}.
+ * Quelle: "attributes" der Fortschrittsdaten vom Server (Shard-ID -> Anzahl
+ * gesyphonter Shards, ausgelesen aus members[uuid].attributes.stacks).
+ * Namen, Seltenheit und die vollstaendige Liste aller Attribute kommen aus
+ * {@link ReferenceData}.
  */
 public class AttributeService {
 
@@ -30,24 +31,12 @@ public class AttributeService {
         this.reference = reference;
     }
 
-    /** Liest die Stacks des Spielers - aus dem aktiven Profil oder (aggregate) dem Maximum ueber alle Profile. */
-    public Map<String, Integer> readStacks(JsonNode profilesResponse, String uuid, boolean aggregate) {
-        String memberKey = ProfileUtil.memberKey(uuid);
+    /** Gesyphonte Shards je Attribut aus den Fortschrittsdaten des Servers ("attributes"). */
+    public Map<String, Integer> readStacks(JsonNode progress) {
         Map<String, Integer> stacks = new LinkedHashMap<>();
-        for (JsonNode profile : ProfileUtil.relevantProfiles(profilesResponse, aggregate)) {
-            profile.path("members").path(memberKey).path("attributes").path("stacks").fields()
-                    .forEachRemaining(e -> stacks.merge(e.getKey(), e.getValue().asInt(0), Math::max));
-        }
+        progress.path("attributes").fields()
+                .forEachRemaining(e -> stacks.put(e.getKey(), e.getValue().asInt(0)));
         return stacks;
-    }
-
-    /** Rohdaten des attributes-Objekts aus dem aktiven Profil (fuer die Fehlersuche). */
-    public JsonNode rawAttributes(JsonNode profilesResponse, String uuid) {
-        String memberKey = ProfileUtil.memberKey(uuid);
-        for (JsonNode profile : ProfileUtil.relevantProfiles(profilesResponse, false)) {
-            return profile.path("members").path(memberKey).path("attributes");
-        }
-        return null;
     }
 
     /** Alle Attribute: freigeschaltete mit Stufe, noch fehlende mit Stufe 0. */
@@ -84,6 +73,6 @@ public class AttributeService {
     /** "SHARD_SEA_SERPENT" -> "Sea Serpent" */
     static String prettify(String key) {
         String base = key.toUpperCase(Locale.ROOT).startsWith("SHARD_") ? key.substring("SHARD_".length()) : key;
-        return ProfileUtil.titleCase(base);
+        return TextUtil.titleCase(base);
     }
 }

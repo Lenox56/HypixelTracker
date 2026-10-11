@@ -3,7 +3,6 @@ package com.hypixeltracker.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.hypixeltracker.model.MissingItem;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -14,9 +13,9 @@ import java.util.Set;
 /**
  * Ist/Soll-Abgleich der Accessoires.
  *
- * Ist: Accessoire-Tasche, Inventar, Enderkiste und Rucksaecke des Spielers
- * (seit API v2 unter member.inventory, nur sichtbar wenn die Inventar-API
- * in den SkyBlock-Einstellungen aktiviert ist).
+ * Ist: die "accessories" der Fortschrittsdaten vom Server (Item-IDs aus
+ * Accessoire-Tasche, Inventar, Enderkiste und Rucksaecken; nur sichtbar, wenn
+ * die Inventar-API in den SkyBlock-Einstellungen aktiviert ist).
  * Soll: alle Items der Kategorie ACCESSORY aus der Item-Datenbank, ohne die
  * in den Referenzdaten ignorierten Sonder-Items.
  */
@@ -27,7 +26,6 @@ public class AccessoryService {
     }
 
     private final ReferenceData reference;
-    private final NbtInventoryParser nbtParser = new NbtInventoryParser();
 
     public AccessoryService() {
         this(ReferenceData.get());
@@ -37,33 +35,12 @@ public class AccessoryService {
         this.reference = reference;
     }
 
-    public OwnedItems readOwnedItems(JsonNode profilesResponse, String uuid, boolean aggregate) throws IOException {
-        String memberKey = ProfileUtil.memberKey(uuid);
+    /** Vorhandene Accessoires aus den Fortschrittsdaten des Servers ("accessories"). */
+    public OwnedItems readOwnedItems(JsonNode progress) {
+        JsonNode accessories = progress.path("accessories");
         Set<String> ids = new HashSet<>();
-        boolean inventoryVisible = false;
-
-        for (JsonNode profile : ProfileUtil.relevantProfiles(profilesResponse, aggregate)) {
-            JsonNode member = profile.path("members").path(memberKey);
-            JsonNode inventory = member.path("inventory");
-            List<JsonNode> fields = new ArrayList<>();
-            fields.add(inventory.path("bag_contents").path("talisman_bag"));
-            fields.add(inventory.path("inv_contents"));
-            fields.add(inventory.path("ender_chest_contents"));
-            inventory.path("backpack_contents").forEach(fields::add);
-            // aeltere API-Version
-            fields.add(member.path("talisman_bag"));
-            fields.add(member.path("inv_contents"));
-            fields.add(member.path("ender_chest_contents"));
-
-            for (JsonNode field : fields) {
-                String data = field.path("data").asText(null);
-                if (data != null && !data.isBlank()) {
-                    inventoryVisible = true;
-                    ids.addAll(nbtParser.extractItemIds(data));
-                }
-            }
-        }
-        return new OwnedItems(ids, inventoryVisible);
+        accessories.path("owned").forEach(n -> ids.add(n.asText()));
+        return new OwnedItems(ids, accessories.path("inventoryApiEnabled").asBoolean(false));
     }
 
     /**
@@ -92,7 +69,7 @@ public class AccessoryService {
             if (!upgrades.isEmpty()) {
                 String next = upgrades.get(0);
                 MarketDataService.ItemInfo nextInfo = allItems.get(next);
-                row.setNote("Upgrade: " + (nextInfo != null ? nextInfo.name() : ProfileUtil.titleCase(next)));
+                row.setNote("Upgrade: " + (nextInfo != null ? nextInfo.name() : TextUtil.titleCase(next)));
             }
             result.add(row);
         }
@@ -105,6 +82,6 @@ public class AccessoryService {
     }
 
     private static String rarity(String tier) {
-        return tier == null || tier.isBlank() ? "" : ProfileUtil.titleCase(tier);
+        return tier == null || tier.isBlank() ? "" : TextUtil.titleCase(tier);
     }
 }

@@ -11,11 +11,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Startet den HypixelTracker-Server.
+ * Startet den Server des SkyBlock Progress Trackers.
  *
  * Endpunkte:
  *   GET /health                        -> "ok" (fuer Docker-Healthcheck)
- *   GET /v1/skyblock/profiles?uuid=... -> SkyBlock-Profile eines Spielers
+ *   GET /v1/skyblock/progress?uuid=... -> ausgewertete Fortschrittsdaten eines Spielers
  *
  * Keylose Hypixel-Endpunkte (Bazaar, Auktionen, Items) ruft die App
  * weiterhin direkt auf, dafuer wird dieser Server nicht gebraucht.
@@ -34,11 +34,11 @@ public class ServerMain {
         HttpServer server = HttpServer.create(new InetSocketAddress(config.port()), 0);
         server.createContext("/health", exchange -> {
             try (exchange) {
-                ProfilesHandler.send(exchange, 200, "{\"success\":true}");
+                ProgressHandler.send(exchange, 200, "{\"success\":true}");
             }
         });
-        server.createContext("/v1/skyblock/profiles",
-                new ProfilesHandler(hypixel::getProfiles, cache, rateLimiter, config.trustProxyHeaders()));
+        server.createContext("/v1/skyblock/progress",
+                new ProgressHandler(hypixel::getProfiles, cache, rateLimiter, config.trustProxyHeaders()));
         server.setExecutor(Executors.newVirtualThreadPerTaskExecutor());
 
         ScheduledExecutorService cleanup = Executors.newSingleThreadScheduledExecutor();
@@ -53,7 +53,7 @@ public class ServerMain {
         }));
 
         server.start();
-        System.out.println("HypixelTracker-Server laeuft auf Port " + config.port()
+        System.out.println("SkyBlock-Progress-Tracker-Server laeuft auf Port " + config.port()
                 + " (Cache " + config.cacheTtlSeconds() + "s, "
                 + config.clientRequestsPerMinute() + " Anfragen/Minute pro Client)");
     }

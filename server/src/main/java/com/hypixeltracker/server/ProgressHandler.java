@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * GET /v1/skyblock/profiles?uuid=...
- * Liefert die Hypixel-Antwort unveraendert durch, damit die App dasselbe
- * JSON-Format wie bei einem direkten Hypixel-Aufruf bekommt.
+ * GET /v1/skyblock/progress?uuid=...&aggregate=true|false
+ * Holt die Profile bei Hypixel (gecacht) und liefert nur die ausgewerteten
+ * Fortschrittsdaten (siehe {@link ProgressExtractor}), nie die rohe Antwort.
  */
-public class ProfilesHandler implements HttpHandler {
+public class ProgressHandler implements HttpHandler {
 
     private static final Pattern UUID_PATTERN =
             Pattern.compile("^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$");
@@ -39,8 +39,9 @@ public class ProfilesHandler implements HttpHandler {
     private final ResponseCache<HypixelClient.ApiResponse> cache;
     private final ClientRateLimiter rateLimiter;
     private final boolean trustProxyHeaders;
+    private final ProgressExtractor extractor = new ProgressExtractor();
 
-    public ProfilesHandler(ProfileFetcher fetcher,
+    public ProgressHandler(ProfileFetcher fetcher,
                            ResponseCache<HypixelClient.ApiResponse> cache,
                            ClientRateLimiter rateLimiter,
                            boolean trustProxyHeaders) {
@@ -77,7 +78,8 @@ public class ProfilesHandler implements HttpHandler {
                     }
                     return r;
                 });
-                send(exchange, 200, response.body());
+                boolean aggregate = Boolean.parseBoolean(queryParam(exchange, "aggregate"));
+                send(exchange, 200, extractor.extract(response.body(), uuid, aggregate));
             } catch (HypixelClient.RateLimitedException e) {
                 exchange.getResponseHeaders().set("Retry-After", String.valueOf(Math.max(e.retryAfterSeconds(), 1)));
                 sendError(exchange, 503, "Server ist gerade ausgelastet, bitte in "
@@ -85,8 +87,8 @@ public class ProfilesHandler implements HttpHandler {
             } catch (UpstreamErrorException e) {
                 int status = e.response.status();
                 if (status == 400 || status == 404 || status == 422) {
-                    // Fehler in der Anfrage selbst -> an den Client weitergeben
-                    send(exchange, status, e.response.body());
+                    // Fehler in der Anfrage selbst -> nur den Grund weitergeben
+                    sendError(exchange, status, "Spieler oder Profil nicht gefunden");
                 } else {
                     // z.B. 403 = Server-Key ungueltig; Details nur ins Log, nicht an Clients
                     System.err.println("Hypixel-Fehler " + status + ": " + e.response.body());

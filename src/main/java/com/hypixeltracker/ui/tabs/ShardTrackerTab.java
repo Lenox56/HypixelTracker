@@ -93,9 +93,9 @@ public class ShardTrackerTab {
 
         BackgroundSync.run(syncButton, statusLabel, progress -> {
             String uuid = apiService.resolveUuid(username);
-            JsonNode profiles = apiService.getProfiles(uuid);
-            writeDebugFile(attributeService.rawAttributes(profiles, uuid));
-            return attributeService.buildOverview(attributeService.readStacks(profiles, uuid, aggregate));
+            JsonNode playerData = apiService.getProgress(uuid, aggregate);
+            writeDebugFile(playerData.path("attributes"));
+            return attributeService.buildOverview(attributeService.readStacks(playerData));
         }, result -> {
             shards.setAll(result);
             long unlocked = shards.stream().filter(AttributeShard::isOwned).count();
@@ -106,10 +106,10 @@ public class ShardTrackerTab {
         });
     }
 
-    private static void writeDebugFile(JsonNode rawAttributes) {
+    private static void writeDebugFile(JsonNode attributes) {
         try {
             DEBUG_FILE.getParentFile().mkdirs();
-            new ObjectMapper().writerWithDefaultPrettyPrinter().writeValue(DEBUG_FILE, rawAttributes);
+            new ObjectMapper().writerWithDefaultPrettyPrinter().writeValue(DEBUG_FILE, attributes);
         } catch (Exception e) {
             System.err.println("Konnte Debug-Datei nicht schreiben: " + e.getMessage());
         }
